@@ -14,7 +14,10 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	 * ScheduleTime has the following methods:
 	 * -setTime(int hours, int minutes): Specify the time we want
 	 * -compareTo(ScheduleTime a) (from Comparable interface): compares to the ScheduleTime a
-	 * -
+	 * -getHours: returns the hours
+	 * -getMinutes: returns the minutes
+	 * -getTime: returns the time as a string "hh:mm"
+	 * 
 	 * 
 	 */
 	
@@ -24,6 +27,28 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	private int time; //To facilitate comparing times (among other operations,the time will be represented as an int)
 	//hours hours minutes minutes 
 	
+	public int getHours()
+	{
+		return time/100;
+	}
+	
+	public int getMinutes()
+	{
+		return time%100;
+	}
+	
+	public String getTime()
+	{
+		String s = getHours() + ":";
+		if (getMinutes() < 10)
+		{
+			s += "0";
+		}
+		
+		s += getMinutes();
+		
+		return s;
+	}
 	
 	public boolean setTime(int hours, int minutes) //Can set the time of a schedule event
 	{
