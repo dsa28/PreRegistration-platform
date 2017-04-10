@@ -18,6 +18,8 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	 * -getMinutes: returns the minutes
 	 * -getTime: returns the time as a string "hh:mm"
 	 * 
+	 * This class is used for abstraction purposes only- user shouldn't have to use it
+	 * 
 	 * 
 	 */
 	
@@ -48,6 +50,28 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		s += getMinutes();
 		
 		return s;
+	}
+	
+	public boolean setTime(String s)
+	{
+		int mid = s.indexOf(":");
+		if (mid < 0)
+		{
+			return false; //Wrong format!!
+		}
+		
+			try
+			{
+				int hours = Integer.parseInt(s.substring(0,mid));
+				int minutes = Integer.parseInt(s.substring(mid+1));
+			
+				return setTime(hours,minutes);
+			}
+			catch(NumberFormatException e)
+			{
+				return false;
+			}
+
 	}
 	
 	public boolean setTime(int hours, int minutes) //Can set the time of a schedule event

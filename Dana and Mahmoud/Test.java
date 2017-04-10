@@ -13,6 +13,7 @@ public class Test {
 		time.setTime(10, 5);
 		System.out.println(time.getTime());
 		
+	
 	}
 
 }
