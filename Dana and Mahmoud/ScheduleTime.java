@@ -1,9 +1,21 @@
 
-public class ScheduleTime {
+public class ScheduleTime implements Comparable<ScheduleTime>{
 	
 	/**
 	 * ScheduleTime is used to represent the start or end time
-	 * of ScheduleElement
+	 * of ScheduleElement.
+	 * ScheduleTime implements Comparable interface
+	 * 
+	 * ScheduleTime has the following constructors:
+	 * -By default: time is 00:00
+	 * -Specify hours and minutes: time will take the value specified (if valid), 0 otherwise
+	 * 
+	 * 
+	 * ScheduleTime has the following methods:
+	 * -setTime(int hours, int minutes): Specify the time we want
+	 * -compareTo(ScheduleTime a) (from Comparable interface): compares to the ScheduleTime a
+	 * -
+	 * 
 	 */
 	
 	//For the timing of an event, we only care about hours and minutes
@@ -36,6 +48,25 @@ public class ScheduleTime {
 	}
 	
 	
+	//Compare two ScheduleTimes
+	@Override
+	public int compareTo(ScheduleTime time) {
+		
+		if (this.time == time.time)
+		{
+			return 0; //if they are equal return 0
+		}
+		
+		if (this.time > time.time)
+		{
+			return 1; //if the first time is bigger return 1
+		}
+		
+		return -1; //if the second time is bigger return -1 
+		
+	}
+	
+	
 	//Constructors
 	ScheduleTime()
 	{
@@ -49,4 +80,6 @@ public class ScheduleTime {
 		
 	}
 
+
+	
 }
