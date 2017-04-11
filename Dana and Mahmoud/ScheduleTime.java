@@ -115,6 +115,26 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		
 	}
 	
+	ScheduleTime add(ScheduleTime op2)
+	{
+		//add schedule time elements
+		//does not take into account day jumps
+		
+		int minutes = this.getMinutes()+op2.getMinutes();
+		int hours = this.getHours() + op2.getHours();
+		
+		return add(hours,minutes);
+	
+	}
+	
+	ScheduleTime add(int hours, int minutes)
+	{
+		int tempmins = minutes%60; //in case of carry
+		int temphours = (hours+ tempmins/60)%24; //in case we move on to another day
+		
+		ScheduleTime result = new ScheduleTime(temphours,tempmins);
+		return result;
+	}
 	
 	//Constructors
 	ScheduleTime()

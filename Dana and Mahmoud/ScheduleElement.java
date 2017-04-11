@@ -1,5 +1,5 @@
 
-public class ScheduleElement {
+public class ScheduleElement implements Comparable<ScheduleElement> {
 	
 	/**
 	 * ScheduleElement are used to make schedules.
@@ -9,6 +9,9 @@ public class ScheduleElement {
 	 * -An end time
 	 * -A title
 	 * -A location
+	 * 
+	 * --For now a scheduleElement only lasts for one day- might extend it
+	 * so an element can have more days
 	 */
 	
 	private ScheduleTime startTime; //start time
@@ -17,6 +20,34 @@ public class ScheduleElement {
 	private String location;
 	private String day; //TODO find a method for days (objects maybe?)
 	
+	
+	@Override
+	public int compareTo(ScheduleElement o) {
+		// Comparing two scheduleElements is simple:
+		//if there's a conflict- if they intersect we retrun 0
+		//if this happens before o we return -1
+		//otherwise we return 1
+		
+		
+		//This comparaison works because we made sure endTime is always less than startTime:
+		//An event can't end before starting
+		if (startTime.compareTo(o.endTime) > 0 ) //it starts after the other event ends
+		{
+			return 1;
+		}
+		else if (endTime.compareTo(o.startTime) < 0) //it ends before the other event starts
+		{
+			return -1;
+		}
+		else
+		{
+			return 0; //theres a conflict!!
+		}
+		
+	}
+	
+	
+	//Basic getters and setters
 	
 	public void setDay(String day)
 	{
@@ -35,29 +66,62 @@ public class ScheduleElement {
 	
 	public boolean setStartTime(String s)
 	{
-		return startTime.setTime(s);
+		ScheduleTime temp = new ScheduleTime();
+		boolean result= temp.setTime(s);
+		
+		//startTime before endTime or endTime not defined
+		if (endTime != null && temp.compareTo(endTime) > 0) 
+		{
+			return false;
+			
+		}
+		
+		startTime = temp;
+		return result;
 	}
 	
 	public boolean setStartTime(int hours, int minutes)
 	{
-		return startTime.setTime(hours,minutes);
+		ScheduleTime temp = new ScheduleTime(hours,minutes);
+		return (setStartTime(temp.getTime())); 
 	}
 	
+	//TODO add conditions to make sure end time happens after start time
 	public boolean setEndTime(String s)
 	{
-		return endTime.setTime(s);
+		
+		ScheduleTime temp = new ScheduleTime();
+		boolean result= temp.setTime(s);
+		
+		//startTime before endTime or endTime not defined
+		if (startTime != null && temp.compareTo(startTime) < 0) 
+		{
+			return false;
+			
+		}
+		
+		endTime = temp;
+		return result;
 	}
 	
 	public boolean setEndTime(int hours, int minutes)
 	{
-		return endTime.setTime(hours,minutes);
+		ScheduleTime temp = new ScheduleTime(hours,minutes);
+		return (setStartTime(temp.getTime())); 
+	}
+	
+	public void setDuration(int hours,int minutes)
+	{
+		setEndTime(startTime.add(hours,minutes).getTime());
+		//Just in case an event takes more than 24h..
+		//TODO deal with this issue
 	}
 	
 	//Constructors
 	ScheduleElement()
 	{
-		startTime = new ScheduleTime();
-		endTime = new ScheduleTime();
+		//startTime = new ScheduleTime();
+		//endTime = new ScheduleTime();
 		location = "TBA"; //Default location
 	
 	}
@@ -69,22 +133,8 @@ public class ScheduleElement {
 		this.name = name;
 	}
 	
-	ScheduleElement(String name,int StartHour,int StartMinute)
-	{
-		this(name);
-		startTime.setTime(StartHour,StartMinute);
-	}
 	
-	
-	
-	ScheduleElement(String name,String day, String startTime, String endTime)
-	{
-		this(name);
-		
-		this.day = day;
-		
-		this.startTime.setTime(startTime);
-		this.endTime.setTime(endTime);
-	}
+
+
 
 }
