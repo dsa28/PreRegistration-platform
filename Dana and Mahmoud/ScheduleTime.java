@@ -39,7 +39,8 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		return time%100;
 	}
 	
-	public String getTime()
+	@Override
+	public String toString()
 	{
 		String s = getHours() + ":";
 		if (getMinutes() < 10)
@@ -50,8 +51,9 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		s += getMinutes();
 		
 		return s;
+
 	}
-	
+
 	public boolean setTime(String s)
 	{
 		int mid = s.indexOf(":");
@@ -115,7 +117,7 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		
 	}
 	
-	ScheduleTime add(ScheduleTime op2)
+	public ScheduleTime add(ScheduleTime op2)
 	{
 		//add schedule time elements
 		//does not take into account day jumps
@@ -127,13 +129,44 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	
 	}
 	
-	ScheduleTime add(int hours, int minutes)
+	public ScheduleTime add(int hours, int minutes)
 	{
-		int tempmins = minutes%60; //in case of carry
-		int temphours = (hours+ tempmins/60)%24; //in case we move on to another day
+		int tempmins = (this.getMinutes()+minutes)%60; //in case of carry
+		int temphours = (this.getHours()+hours+ tempmins/60)%24; //in case we move on to another day
 		
 		ScheduleTime result = new ScheduleTime(temphours,tempmins);
 		return result;
+	}
+	
+	public ScheduleTime getDifference(ScheduleTime t)
+	{
+		//Return the difference between two timings (in absolute value)
+		ScheduleTime time1 = this;
+		ScheduleTime time2 = t; //time2 is the biggest time
+		
+		
+		if (this.compareTo(t) > 1)
+		{
+			time1 = t;
+			time2 = this;
+		}
+		
+		int carry = 0;
+		
+		int minutes = (time2.getMinutes() - time1.getMinutes()); //Difference in minutes is at most 59!
+		
+		
+		if (minutes < 0)
+		{
+			minutes += 60; //positive number
+			carry = -1;
+		}
+		int hours = time2.getHours() - time1.getHours() + carry;
+
+		ScheduleTime result = new ScheduleTime(hours,minutes);
+	
+		return result;
+		
 	}
 	
 	//Constructors

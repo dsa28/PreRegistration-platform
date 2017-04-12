@@ -12,6 +12,8 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	 * 
 	 * --For now a scheduleElement only lasts for one day- might extend it
 	 * so an element can have more days
+	 * 
+	 * By default a ScheduleElement will take all day
 	 */
 	
 	private ScheduleTime startTime; //start time
@@ -27,7 +29,7 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 		//if there's a conflict- if they intersect we retrun 0
 		//if this happens before o we return -1
 		//otherwise we return 1
-		
+
 		
 		//This comparaison works because we made sure endTime is always less than startTime:
 		//An event can't end before starting
@@ -70,7 +72,7 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 		boolean result= temp.setTime(s);
 		
 		//startTime before endTime or endTime not defined
-		if (endTime != null && temp.compareTo(endTime) > 0) 
+		if (temp.compareTo(endTime) > 0) 
 		{
 			return false;
 			
@@ -83,7 +85,23 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	public boolean setStartTime(int hours, int minutes)
 	{
 		ScheduleTime temp = new ScheduleTime(hours,minutes);
-		return (setStartTime(temp.getTime())); 
+		return (setStartTime(temp.toString())); 
+	}
+	
+	public boolean changeTime(int hours, int minutes)
+	{
+		//New timing, but same duration
+		ScheduleTime duration = startTime.getDifference(endTime);
+		
+		boolean b = startTime.setTime(hours,minutes);
+		
+		if (!b)
+		{
+			return false;
+		}
+		
+		setDuration(duration.getHours(),duration.getMinutes());
+		return true;
 	}
 	
 	//TODO add conditions to make sure end time happens after start time
@@ -94,7 +112,7 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 		boolean result= temp.setTime(s);
 		
 		//startTime before endTime or endTime not defined
-		if (startTime != null && temp.compareTo(startTime) < 0) 
+		if (temp.compareTo(startTime) < 0) 
 		{
 			return false;
 			
@@ -107,21 +125,31 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	public boolean setEndTime(int hours, int minutes)
 	{
 		ScheduleTime temp = new ScheduleTime(hours,minutes);
-		return (setStartTime(temp.getTime())); 
+		return (setStartTime(temp.toString())); 
 	}
 	
 	public void setDuration(int hours,int minutes)
 	{
-		setEndTime(startTime.add(hours,minutes).getTime());
+
+		 setEndTime(startTime.add(hours,minutes).toString());
 		//Just in case an event takes more than 24h..
 		//TODO deal with this issue
+	}
+	
+	
+	
+	@Override
+	public String toString()
+	{
+			return startTime + "-" +  endTime;
+	
 	}
 	
 	//Constructors
 	ScheduleElement()
 	{
-		//startTime = new ScheduleTime();
-		//endTime = new ScheduleTime();
+		startTime = new ScheduleTime(0,0); //minimum possible time
+		endTime = new ScheduleTime(23,59); //maximum possible time
 		location = "TBA"; //Default location
 	
 	}
