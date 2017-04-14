@@ -29,7 +29,7 @@ public class Test {
 		elem.setDuration(0, 50);
 		System.out.println(elem);
 		
-		elem.changeTime(11, 00);
+		elem.setTime(11, 00);
 		System.out.println(elem);
 		
 		ScheduleElement elem2 = new ScheduleElement();
@@ -44,7 +44,7 @@ public class Test {
 		sc.addElement(elem2);
 		elem2.setDuration(2, 00);
 		ScheduleElement elem3 = new ScheduleElement();
-		elem3.changeTime(15, 40);
+		elem3.setTime(15, 40);
 		
 		System.out.println(elem3);
 		System.out.println(sc.hasConflict(elem3));
@@ -52,7 +52,7 @@ public class Test {
 		sc.addElement(elem3);
 		elem3 = new ScheduleElement();
 		elem3.setDuration(0,20);
-		elem3.changeTime(15,00);
+		elem3.setTime(15,00);
 		
 		sc.addElement(elem3);
 		

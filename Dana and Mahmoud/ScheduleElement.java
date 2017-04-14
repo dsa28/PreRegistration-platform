@@ -88,7 +88,7 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 		return (setStartTime(temp.toString())); 
 	}
 	
-	public boolean changeTime(int hours, int minutes)
+	public boolean setTime(int hours, int minutes)
 	{
 		//New timing, but same duration
 		ScheduleTime duration = startTime.getDifference(endTime);

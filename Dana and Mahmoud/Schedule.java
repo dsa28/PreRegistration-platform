@@ -61,6 +61,7 @@ class Schedule {
 	//They need to be sorted for us to detect conflicts
 	private void insert(ScheduleElement elem)
 	{
+		//TODO arrange it so its done in O(log n) -- binary search
 		
 		int location = 0;//to take into account the first element
 	
