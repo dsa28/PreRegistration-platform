@@ -37,6 +37,12 @@ public abstract class MessageClient {
 
     }
 
+    void sendMessage ( int senderID, int receiverID, String content)
+    {
+        Message M = new Message(senderID, receiverID, content);
+        saveMessageToDB(M);
+
+    }
 
     void deleteMessageInDB (Message M)
     {
