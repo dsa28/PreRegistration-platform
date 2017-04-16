@@ -102,6 +102,7 @@ public class Course {
 	{
 		return teacher;
 	}
+
 	
 	Course(String name)
 	{

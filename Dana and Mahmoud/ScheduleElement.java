@@ -145,7 +145,7 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 	public boolean setEndTime(int hours, int minutes)
 	{
 		ScheduleTime temp = new ScheduleTime(hours,minutes);
-		return (setStartTime(temp.toString())); 
+		return (setEndTime(temp.toString())); 
 	}
 	
 	public void setDuration(int hours,int minutes)
@@ -161,7 +161,12 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 	@Override
 	public String toString()
 	{
-			return day + " " + startTime + "-" +  endTime;
+		String s = "";
+		if (name != null && name != "") //theres a name
+		{
+			s = name+ " ";
+		}
+		return s + day + " " + startTime + "-" +  endTime;
 	
 	}
 	
@@ -173,6 +178,7 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		endTime = new ScheduleTime(23,59); //maximum possible time
 		location = "TBA"; //Default location
 	
+		
 	}
 	
 	

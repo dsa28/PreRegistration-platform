@@ -3,6 +3,12 @@ public class Test {
 
 	public static void main(String[] args) {
 		
+		/*
+		 * Class used to test Schedules.
+		 * There are also some tests of Day, ScheduleTime and ScheduleElement;
+		 * the building blocks of Schedule. 
+		 */
+		
 		//Testing days
 		System.out.println(Day.Saturday);
 		System.out.println(Day.Sunday.compareTo(Day.Sunday));
