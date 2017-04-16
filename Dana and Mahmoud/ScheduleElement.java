@@ -1,5 +1,5 @@
 
-public class ScheduleElement implements Comparable<ScheduleElement> {
+public class ScheduleElement implements Comparable<ScheduleElement>{
 	
 	/**
 	 * ScheduleElement are used to make schedules.
@@ -20,8 +20,21 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	private ScheduleTime endTime; //end time
 	private String name; //For now will use strings for name and location-might change later
 	private String location;
-	private String day; //TODO find a method for days (objects maybe?)
+	private Day day; 
 	
+	
+	public ScheduleElement clone()
+	{
+		ScheduleElement elem = new ScheduleElement(name);
+		
+		elem.setStartTime(startTime.toString());
+		elem.setEndTime(endTime.toString());
+		elem.setLocation(location);
+		elem.setDay(day);
+		
+		return elem;
+			
+	}
 	
 	@Override
 	public int compareTo(ScheduleElement o) {
@@ -33,6 +46,13 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 		
 		//This comparaison works because we made sure endTime is always less than startTime:
 		//An event can't end before starting
+		
+		if (this.day.compareTo(o.day)!= 0)
+		{
+			return this.day.compareTo(o.day); //not same day-- no way theres gonna be a conflict
+		}
+		
+		//same day- need to check time 
 		if (startTime.compareTo(o.endTime) > 0 ) //it starts after the other event ends
 		{
 			return 1;
@@ -51,7 +71,7 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	
 	//Basic getters and setters
 	
-	public void setDay(String day)
+	public void setDay(Day day)
 	{
 		this.day = day;
 	}
@@ -141,13 +161,14 @@ public class ScheduleElement implements Comparable<ScheduleElement> {
 	@Override
 	public String toString()
 	{
-			return startTime + "-" +  endTime;
+			return day + " " + startTime + "-" +  endTime;
 	
 	}
 	
 	//Constructors
 	ScheduleElement()
 	{
+		day = Day.Sunday;
 		startTime = new ScheduleTime(0,0); //minimum possible time
 		endTime = new ScheduleTime(23,59); //maximum possible time
 		location = "TBA"; //Default location

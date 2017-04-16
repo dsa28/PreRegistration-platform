@@ -68,12 +68,28 @@ public class Test {
 		elem3.setDuration(0,20);
 		elem3.setTime(15,00);
 		
-		sc.addElement(elem3);
+		ScheduleElement elem4 = new ScheduleElement();
+		elem4.setDuration(0,20);
+		elem4.setTime(15,00);
+		
+		elem4.setDay(Day.Wednesday);
+		
+		sc.addElement(elem3.clone());
+		System.out.println(sc.hasConflict(elem4));
 		System.out.println(sc.hasConflict(elem3));
 		System.out.println();
+		
+		sc.addElement(elem4);
 		sc.print();
 		
+		System.out.println();
 		
+		elem3.setDay(Day.Monday);
+		sc.addElement(elem3.clone());
+		elem3.setDay(Day.Thursday);
+		sc.addElement(elem3.clone());
+		
+		sc.print();
 	}
 
 }
