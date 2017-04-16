@@ -30,7 +30,18 @@ public class Course {
 	private int capacity;
 	
 	private Schedule timings; //timing of the course
+	private Room room; //room of the course
 
+	
+	public Room getRoom()
+	{
+		return room;
+	}
+	
+	public void setRoom(Room room)
+	{
+		this.room = room;
+	}
 	
 	public Schedule getTimings()
 	{
@@ -50,6 +61,7 @@ public class Course {
 		
 		ScheduleElement temp = time.clone();
 		temp.setName(name);
+		temp.setLocation(room.getName());
 		
 		return timings.addElement(temp);
 	}
@@ -99,6 +111,7 @@ public class Course {
 		capacity = 0;
 		
 		timings = new Schedule();
+		room = new Room();
 		
 	}
 	
