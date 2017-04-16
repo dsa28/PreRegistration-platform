@@ -90,6 +90,39 @@ public class Test {
 		sc.addElement(elem3.clone());
 		
 		sc.print();
+		
+		System.out.println();
+		
+		//Testing operations with many schedules
+		Schedule sc2 = new Schedule();
+		sc2.addElement(elem); 
+		sc2.print();
+		System.out.println(sc.hasConflict(sc2)); //true
+		System.out.println(sc2.hasConflict(sc)); //true
+		
+		Schedule sc3 = new Schedule();
+		elem = new ScheduleElement();
+		elem.setDay(Day.Saturday);
+		sc3.addElement(elem); 
+		sc3.print();
+		System.out.println(sc.hasConflict(sc3)); //false
+		System.out.println(sc3.hasConflict(sc)); //false
+		
+		sc3.addSchedule(sc2);
+		sc3.print();
+		System.out.println(sc.hasConflict(sc3)); //true
+		System.out.println(sc3.hasConflict(sc));//true
+		
+		System.out.println();
+		
+		sc2 = new Schedule();
+		sc2.addElement(elem);
+		sc2.print();
+		System.out.println(sc2.hasConflict(sc)); //false 
+		System.out.println(sc.hasConflict(sc2)); //false
+		sc2.addSchedule(sc);
+		sc2.print();
+		
 	}
 
 }

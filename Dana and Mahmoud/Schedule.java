@@ -27,13 +27,43 @@ class Schedule {
 		return true;
 	}
 	
+	boolean addSchedule (Schedule schedule)
+	{
+		if (!hasConflict(schedule)){
+		
+		for (int i=0; i<schedule.elements.size(); i++)
+		{
+			insert(schedule.elements.get(i));
+		}
+		
+		return true;
+		
+		}
+		
+		return false; //theres a conflict- couldnt add
+	}
 	
 	boolean hasConflict(ScheduleElement element)
 	{
 		return hasConflict(element,0,elements.size()-1);
 	}
 	
-	//helper function
+	
+	boolean hasConflict(Schedule schedule)
+	{
+		for (int i=0; i<elements.size(); i++)
+		{
+			if (schedule.hasConflict(elements.get(i)))
+			{
+				return true; //check conflict for each element
+			}
+		}
+		
+		return false; //no conflict
+	}
+	
+	
+	//helper function for binary search
 	private boolean hasConflict(ScheduleElement element,int start, int end)
 	{
 		if (start>end) //base case

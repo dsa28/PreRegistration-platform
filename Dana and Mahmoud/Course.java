@@ -11,8 +11,15 @@ public class Course {
 	 * Course implements the following methods:
 	 * -setTime
 	 * -increaseCapacity
+	 * -addStudent
 	 * -getReigstered
-	 * 
+	 * -getScheduleElement
+	 * -addTiming
+	 * -setTimings
+	 * -clearTimings
+	 * -setTeacher
+	 * -getTeacher
+	 *
 	 */
 
 	String name;
@@ -22,28 +29,85 @@ public class Course {
 	
 	private int capacity;
 	
-	private ScheduleElement timing; //timing of the course
+	private Schedule timings; //timing of the course
+
 	
-	
-	void setTime(int hour, int minutes)
+	public Schedule getTimings()
 	{
-		//Set the timing of the course
-		
-		timing = new ScheduleElement(name);
-		timing.setTime(hour,minutes);
+		//Get the timing for a course
+		return timings;
 	}
 	
-	void increaseCapacity(int extra) 
+	public void setTimings(Schedule timings)
+	{
+		this.timings = timings;
+	}
+	
+	public boolean addTiming(ScheduleElement time)
+	{
+		
+		//Add a timing for the course
+		
+		ScheduleElement temp = time.clone();
+		temp.setName(name);
+		
+		return timings.addElement(temp);
+	}
+	
+	public void clearTimings()
+	{
+		timings= new Schedule();
+	}
+	
+	public boolean addStudent(Student student)
+	{
+		if (students.size() < capacity) //there's enough capacity for the student
+		{
+			students.add(student);
+		}
+		return false; //not enough places :( 
+	}
+	
+	public void increaseCapacity(int extra) 
 	{
 		//Increase capacity by the specified amount
 		capacity += extra;
 	}
 	
-	int getRegistered()
+	public int getRegistered()
 	{
 		//Get the number of registered students
 		return students.size();
 	}
+	
+	public void setTeacher(Teacher teacher)
+	{
+		this.teacher = teacher;
+	}
+	
+	public Teacher getTeacher()
+	{
+		return teacher;
+	}
+	
+	Course(String name)
+	{
+		this.name = name;
+		students = new ArrayList<Student>();
+		teacher = new Teacher();
+		
+		capacity = 0;
+		
+		timings = new Schedule();
+		
+	}
+	
+	Course(String name, int capacity)
+	{
+		this(name);
+		this.capacity = capacity;
+	}
+
 
 	
 }
