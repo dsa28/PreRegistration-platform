@@ -2,43 +2,57 @@
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		//Testing days
+		System.out.println(Day.Saturday);
+		System.out.println(Day.Sunday.compareTo(Day.Sunday));
+		System.out.println(Day.Sunday.compareTo(Day.Monday));
+		System.out.println(Day.Saturday.compareTo(Day.Sunday));
+		
 
+		System.out.println(Day.Friday.nextDay());
+		System.out.println(Day.Sunday.nextDay());
+		
+		System.out.println();
+		
 		//Testing ScheduleTime
 		ScheduleTime time=  new ScheduleTime(10,50);
-		System.out.println(time);
+		System.out.println(time); //10:50
 		
-		time.setTime(25, 0);
-		System.out.println(time);
+		System.out.println(time.setTime(25, 0)); //false
+		System.out.println(time); //still 10:50!
 		
 		time.setTime(10, 5);
-		System.out.println(time);
+		System.out.println(time); //10:05
 		
 		ScheduleTime time2 = new ScheduleTime();
 		
 		time2.setTime("0:50");
-		System.out.println(time2);
+		System.out.println(time2); //0:50
 		
-		System.out.println(time.add(time2));
+		System.out.println(time.add(time2)); //10:55 
+		System.out.println();
 		
 		
 		//Testing scheduleElement
-		ScheduleElement elem = new ScheduleElement();
-		elem.setStartTime(10,5);
+		ScheduleElement elem = new ScheduleElement();//0:00-23:59
+		elem.setStartTime(10,5); //10:05-23:59
 		System.out.println(elem);
-		elem.setDuration(0, 50);
-		System.out.println(elem);
+		elem.setDuration(0, 50); //0:50
+		System.out.println(elem); //10:05-10:55
 		
 		elem.setTime(11, 00);
-		System.out.println(elem);
+		System.out.println(elem); //11:00-11:50
 		
 		ScheduleElement elem2 = new ScheduleElement();
-		elem2.setStartTime(12,00);
+		elem2.setStartTime(12,00); //12:00-23:59
 		
-		System.out.println(elem2);
+		System.out.println(elem2); 
+		System.out.println();
+		
 		//Testing schedule
 		Schedule sc = new Schedule();
-		sc.addElement(elem);
+		sc.addElement(elem); 
 		System.out.println(sc.hasConflict(elem2));
 		
 		sc.addElement(elem2);
@@ -55,8 +69,11 @@ public class Test {
 		elem3.setTime(15,00);
 		
 		sc.addElement(elem3);
-		
+		System.out.println(sc.hasConflict(elem3));
+		System.out.println();
 		sc.print();
+		
+		
 	}
 
 }

@@ -22,7 +22,7 @@ public class Course {
 	
 	private int capacity;
 	
-	ScheduleElement timing; //timing of the course
+	private ScheduleElement timing; //timing of the course
 	
 	
 	void setTime(int hour, int minutes)

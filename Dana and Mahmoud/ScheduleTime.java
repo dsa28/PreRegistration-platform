@@ -27,7 +27,8 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	//Hours will be represented in a 24h system (13:00 instead of 1:00 pm)
 	
 	private int time; //To facilitate comparing times (among other operations,the time will be represented as an int)
-	//hours hours minutes minutes 
+	//hours hours minutes minutes
+
 	
 	public int getHours()
 	{
@@ -39,9 +40,11 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 		return time%100;
 	}
 	
+	
+	
 	@Override
 	public String toString()
-	{
+	{ 
 		String s = getHours() + ":";
 		if (getMinutes() < 10)
 		{
@@ -103,6 +106,7 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	@Override
 	public int compareTo(ScheduleTime time) {
 		
+		
 		if (this.time == time.time)
 		{
 			return 0; //if they are equal return 0
@@ -120,10 +124,11 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	public ScheduleTime add(ScheduleTime op2)
 	{
 		//add schedule time elements
-		//does not take into account day jumps
+	
 		
-		int minutes = this.getMinutes()+op2.getMinutes();
-		int hours = this.getHours() + op2.getHours();
+		int minutes = op2.getMinutes();
+		int hours = op2.getHours();
+
 		
 		return add(hours,minutes);
 	
