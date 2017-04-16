@@ -114,7 +114,7 @@ public class Test {
 		System.out.println(sc.hasConflict(sc3)); //false
 		System.out.println(sc3.hasConflict(sc)); //false
 		
-		sc3.addSchedule(sc2);
+		sc3.addElement(sc2);
 		sc3.print();
 		System.out.println(sc.hasConflict(sc3)); //true
 		System.out.println(sc3.hasConflict(sc));//true
@@ -126,7 +126,7 @@ public class Test {
 		sc2.print();
 		System.out.println(sc2.hasConflict(sc)); //false 
 		System.out.println(sc.hasConflict(sc2)); //false
-		sc2.addSchedule(sc);
+		sc2.addElement(sc);
 		sc2.print();
 		
 	}

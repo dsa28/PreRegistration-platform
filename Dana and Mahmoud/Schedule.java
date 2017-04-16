@@ -27,7 +27,7 @@ class Schedule {
 		return true;
 	}
 	
-	boolean addSchedule (Schedule schedule)
+	boolean addElement (Schedule schedule)
 	{
 		if (!hasConflict(schedule)){
 		

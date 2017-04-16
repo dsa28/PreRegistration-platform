@@ -30,7 +30,7 @@ public class Test2 {
 	time.setDay(Day.Friday);
 	Math261.addTiming(time);
 	
-	schedule.addSchedule(Math261.getTimings());
+	schedule.addElement(Math261.getTimings());
 	schedule.print();
 	System.out.println();
 	
@@ -45,7 +45,7 @@ public class Test2 {
 	Math241.getTimings().print(); //Printing the schedule of a course
 	System.out.println();
 	
-	schedule.addSchedule(Math241.getTimings());
+	schedule.addElement(Math241.getTimings());
 	schedule.print();
 	System.out.println();
 	
@@ -57,7 +57,16 @@ public class Test2 {
 	time.setDay(Day.Friday);
 	Cvsp205.addTiming(time);
 	
-	schedule.addSchedule(Cvsp205.getTimings());
+	schedule.addElement(Cvsp205.getTimings());
+	
+	time.setDay(Day.Tuesday);
+	time.setEndTime(19,30);
+	time.setStartTime(18,00);
+	
+	Eece501.addTiming(time);
+	
+	schedule.addElement(Eece501.getTimings());
+	
 	schedule.print();
 	System.out.println();
 	
@@ -73,6 +82,7 @@ public class Test2 {
 	Math241.setTeacher(new Teacher("Hazar Abu Khuzam"));
 	Math241.increaseCapacity(25); //adding capacity
 
+
 	Math241.print();
 	System.out.println();
 	
@@ -84,6 +94,7 @@ public class Test2 {
 	
 	System.out.println();
 	Math241.print(); //checking if they registered
+	System.out.println();
 	
 	for (int i=0; i<18; i++)
 	{
