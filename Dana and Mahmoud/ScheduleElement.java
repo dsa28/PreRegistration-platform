@@ -152,8 +152,7 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 	{
 
 		 setEndTime(startTime.add(hours,minutes).toString());
-		//Just in case an event takes more than 24h..
-		//TODO deal with this issue
+		
 	}
 	
 	

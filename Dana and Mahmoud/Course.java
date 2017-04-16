@@ -77,6 +77,7 @@ public class Course {
 		if (students.size() < capacity) //there's enough capacity for the student
 		{
 			students.add(student);
+			return true;
 		}
 		return false; //not enough places :( 
 	}
@@ -103,6 +104,14 @@ public class Course {
 		return teacher;
 	}
 
+	void print()
+	{
+		System.out.println("Name: " + name);
+		System.out.println("Teacher: " + teacher.name);
+		System.out.println("Capacity: " + capacity);
+		System.out.println("Registered: " + getRegistered());
+		System.out.println("Location: " + room.getName());
+	}
 	
 	Course(String name)
 	{
@@ -120,7 +129,11 @@ public class Course {
 	Course(String name, int capacity)
 	{
 		this(name);
-		this.capacity = capacity;
+		
+		if (capacity >= 0)
+		{
+			this.capacity = capacity;
+		}
 	}
 
 

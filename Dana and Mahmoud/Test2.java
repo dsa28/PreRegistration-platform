@@ -59,6 +59,41 @@ public class Test2 {
 	
 	schedule.addSchedule(Cvsp205.getTimings());
 	schedule.print();
+	System.out.println();
+	
+	System.out.println(Math261.addStudent(new Student())); //no capacity..
+	System.out.println();
+	Math261.print();
+	System.out.println();
+	
+	
+	System.out.println(Math241.addStudent(new Student())); //no capacity
+	System.out.println();
+	//Test inputting data into courses
+	Math241.setTeacher(new Teacher("Hazar Abu Khuzam"));
+	Math241.increaseCapacity(25); //adding capacity
+
+	Math241.print();
+	System.out.println();
+	
+	for (int i=0; i<10; i++)
+	{
+		System.out.println(Math241.addStudent(new Student())); //students register
+	
+	}
+	
+	System.out.println();
+	Math241.print(); //checking if they registered
+	
+	for (int i=0; i<18; i++)
+	{
+		System.out.println(Math241.addStudent(new Student())); //more students register
+	
+	}
+	
+	
+	System.out.println();
+	Math241.print(); //oh no.. section full!
 	
 	}
 }
