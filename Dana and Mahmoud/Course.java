@@ -40,6 +40,7 @@ public class Course {
 	
 	public void setRoom(Room room)
 	{
+		//TODO Need to add stuff and make sure no conflict
 		this.room = room;
 	}
 	
@@ -111,7 +112,7 @@ public class Course {
 		capacity = 0;
 		
 		timings = new Schedule();
-		room = new Room();
+		room = Room.getRoom(); //Room is TBA 
 		
 	}
 	
