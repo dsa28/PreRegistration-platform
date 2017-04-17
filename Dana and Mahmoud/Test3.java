@@ -84,6 +84,12 @@ public class Test3 {
 		System.out.println();
 		nicely221.print();
 		System.out.println();
+		
+		nicely221.empty();
+		nicely221.print();
+		
+		System.out.println();
+		Math261.print();
 	
 		
 	}

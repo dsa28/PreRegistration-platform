@@ -18,6 +18,18 @@ class Schedule {
 	private ArrayList<ScheduleElement> elements;
 	
 	
+	public boolean contains(String s)
+	{
+		for (int i=0; i<elements.size(); i++)
+		{
+			if (elements.get(i).getName().equals(s))
+			{
+				return true;
+			}	
+		}
+		return false;
+	}
+	
 	public boolean addElement(ScheduleElement element)
 	{
 		if (hasConflict(element))

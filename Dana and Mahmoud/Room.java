@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Room {
@@ -12,7 +13,7 @@ public class Room {
 	 * 
 	 */
 	
-	//TODO: need to be able to remove courses from room..
+	
 	
 	
 	private int maxCapacity;
@@ -21,6 +22,26 @@ public class Room {
 	private Schedule schedule = new Schedule(); //Schedule to make sure no two courses happen at the same time
 	
 	static public HashMap<String,Room> rooms = new HashMap<String,Room>(); //the rooms of aub
+	private ArrayList<Course> courses = new ArrayList<Course>();
+	
+	public void addCourse(Course course)
+	{
+		courses.add(course);
+	}
+	
+	public void empty()
+	{
+		//To delete all courses from a room, we need to update them one by one
+		//and let them know we changed room
+		//observer pattern
+		for (int i=0; i<courses.size();i++)
+		{
+			courses.get(i).setRoom(getRoom()); //make room TBA
+		}
+		
+		courses = new ArrayList<Course>(); //no more courses in the room
+		schedule = new Schedule();
+	}
 	
 	public void remove(String name)
 	{

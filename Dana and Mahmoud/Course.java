@@ -53,6 +53,7 @@ public class Course {
 			
 			this.room.remove(name); //course is no longer given in that room
 			this.room = room;
+			room.addCourse(this);
 			//need to empty old room, if any
 		}
 		
