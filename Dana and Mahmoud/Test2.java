@@ -106,5 +106,33 @@ public class Test2 {
 	System.out.println();
 	Math241.print(); //oh no.. section full!
 	
+	//removing something from schedule
+	schedule.remove(Math241.getName());
+	System.out.println();
+	schedule.print();
+	System.out.println();
+	
+	time.setTime(10,00);
+	Eece442.addTiming(time);
+	time.setTime(11,31);
+	Eece442.addTiming(time);
+	
+	Eece442.getTimings().print();
+	System.out.println(schedule.addElement(Eece442.getTimings()));
+	
+	System.out.println();
+	schedule.print();
+	System.out.println();
+	
+	schedule.remove(Eece442.getName());
+	System.out.println();
+	schedule.print();
+	System.out.println();
+	
+	schedule.remove(Cvsp205.getName());
+	System.out.println();
+	schedule.print();
+	System.out.println();
+	
 	}
 }

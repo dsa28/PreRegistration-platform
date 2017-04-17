@@ -22,7 +22,7 @@ public class Course {
 	 *
 	 */
 
-	String name;
+	private String name;
 	
 	private Teacher teacher;
 	private ArrayList<Student> students;
@@ -32,16 +32,31 @@ public class Course {
 	private Schedule timings; //timing of the course
 	private Room room; //room of the course
 
+	public String getName()
+	{
+		return name;
+	}
 	
 	public Room getRoom()
 	{
 		return room;
 	}
 	
-	public void setRoom(Room room)
+
+	public boolean setRoom(Room room)
 	{
-		//TODO Need to add stuff and make sure no conflict
-		this.room = room;
+		boolean bool = room.addElement(timings);
+		
+		
+		if (bool)
+		{
+			
+			this.room.remove(name); //course is no longer given in that room
+			this.room = room;
+			//need to empty old room, if any
+		}
+		
+		return bool;
 	}
 	
 	public Schedule getTimings()
@@ -50,26 +65,37 @@ public class Course {
 		return timings;
 	}
 	
-	public void setTimings(Schedule timings)
-	{
-		this.timings = timings;
-	}
+	
 	
 	public boolean addTiming(ScheduleElement time)
 	{
 		
 		//Add a timing for the course
 		
+		if (room.hasConflict(time)) //if the room is taken at that time we cant
+		{
+			return false;
+		}
+		
 		ScheduleElement temp = time.clone();
 		temp.setName(name);
 		temp.setLocation(room.getName());
 		
-		return timings.addElement(temp);
+	
+		boolean added= timings.addElement(temp); //temporary boolean
+		if (added) //added the timing
+		{
+
+			room.addElement(temp); //add new timings
+		}
+		
+		return added;
 	}
 	
 	public void clearTimings()
 	{
 		timings= new Schedule();
+		room.remove(name); //no more timings- we need to remove them from the room
 	}
 	
 	public boolean addStudent(Student student)

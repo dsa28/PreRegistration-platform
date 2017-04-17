@@ -12,12 +12,56 @@ public class Room {
 	 * 
 	 */
 	
+	//TODO: need to be able to remove courses from room..
+	
+	
 	private int maxCapacity;
 	private String name; //we are assuming each room has a unique name which will be used as key in the hashmap
 	
-	private Schedule schedule; //Schedule to make sure no two courses happen at the same time
+	private Schedule schedule = new Schedule(); //Schedule to make sure no two courses happen at the same time
 	
-	static public HashMap<String,Room> rooms; //the rooms of aub
+	static public HashMap<String,Room> rooms = new HashMap<String,Room>(); //the rooms of aub
+	
+	public void remove(String name)
+	{
+		schedule.remove(name);
+	}
+	
+	public boolean addElement(Schedule schedule)
+	{
+		//When we add a course to a room, we will put its schedule with the room's schedule
+		if (hasConflict(schedule))
+		{
+			return false; //conflict! can't add the course :( 
+		}
+		
+		this.schedule.addElement(schedule);
+		return true;
+	}
+	
+	public boolean addElement(ScheduleElement element)
+	{
+		Schedule tempschedule = new Schedule();
+		tempschedule.addElement(element);
+		return addElement(tempschedule);
+	}
+	
+	
+	
+	public Schedule getSchedule()
+	{
+		return schedule;
+	}
+	
+	public boolean hasConflict(ScheduleElement elem)
+	{
+		return this.schedule.hasConflict(elem);
+	}
+	
+	public boolean hasConflict(Schedule schedule)
+	{
+		return this.schedule.hasConflict(schedule);
+	}
 	
 	public void setMaxCapacity(int max)
 	{
@@ -32,6 +76,12 @@ public class Room {
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void print()
+	{
+		System.out.println(name);
+		schedule.print();
 	}
 	
 	static public Room getRoom()

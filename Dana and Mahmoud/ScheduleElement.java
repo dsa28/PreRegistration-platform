@@ -155,6 +155,10 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
 	
 	
 	@Override

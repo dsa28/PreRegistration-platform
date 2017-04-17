@@ -9,6 +9,8 @@ class Schedule {
 	 *Schedule implements the following methods:
 	 *-addElement()
 	 *-hasConflict()
+	 *-remove(String name) -- remove all events with the name "name"
+	 *-contains(String name) -- checks if the schedule has events with the name "name"
 	 *
 	 *A schedule is basically an ordered list of elements with binary search and insertion
 	 */
@@ -16,7 +18,7 @@ class Schedule {
 	private ArrayList<ScheduleElement> elements;
 	
 	
-	boolean addElement(ScheduleElement element)
+	public boolean addElement(ScheduleElement element)
 	{
 		if (hasConflict(element))
 		{
@@ -27,7 +29,7 @@ class Schedule {
 		return true;
 	}
 	
-	boolean addElement (Schedule schedule)
+	public boolean addElement (Schedule schedule)
 	{
 		if (!hasConflict(schedule)){
 		
@@ -43,13 +45,13 @@ class Schedule {
 		return false; //theres a conflict- couldnt add
 	}
 	
-	boolean hasConflict(ScheduleElement element)
+	public boolean hasConflict(ScheduleElement element)
 	{
 		return hasConflict(element,0,elements.size()-1);
 	}
 	
 	
-	boolean hasConflict(Schedule schedule)
+	public boolean hasConflict(Schedule schedule)
 	{
 		for (int i=0; i<elements.size(); i++)
 		{
@@ -62,6 +64,24 @@ class Schedule {
 		return false; //no conflict
 	}
 	
+	
+	public void remove(String name)
+	{
+		//remove all elements with the name "name"
+		for (int i=0; i<elements.size();)
+		{
+			if (elements.get(i).getName().equals(name))
+			{
+				//has the name we are looking for-- need to deleted it
+				elements.remove(i);
+			}
+			else
+			{
+				i++;
+			}
+		}
+		
+	}
 	
 	//helper function for binary search
 	private boolean hasConflict(ScheduleElement element,int start, int end)
@@ -91,8 +111,6 @@ class Schedule {
 	//They need to be sorted for us to detect conflicts
 	private void insert(ScheduleElement elem)
 	{
-		//TODO arrange it so its done in O(log n) -- binary search
-		
 		int location = 0;//to take into account the first element
 	
 		

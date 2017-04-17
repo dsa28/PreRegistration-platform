@@ -136,8 +136,11 @@ public class ScheduleTime implements Comparable<ScheduleTime>{
 	
 	public ScheduleTime add(int hours, int minutes)
 	{
-		int tempmins = (this.getMinutes()+minutes)%60; //in case of carry
+		int tempmins = (this.getMinutes()+minutes); 
 		int temphours = (this.getHours()+hours+ tempmins/60)%24; //in case we move on to another day
+		
+		tempmins = tempmins%60;
+		
 		
 		ScheduleTime result = new ScheduleTime(temphours,tempmins);
 		return result;
