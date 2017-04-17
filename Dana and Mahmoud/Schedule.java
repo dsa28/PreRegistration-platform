@@ -20,14 +20,10 @@ class Schedule {
 	
 	public boolean contains(String s)
 	{
-		for (int i=0; i<elements.size(); i++)
-		{
-			if (elements.get(i).getName().equals(s))
-			{
-				return true;
-			}	
-		}
-		return false;
+		//Can check if a schedule contains a certain element
+		//Useful when we want to limit the occurence to an event
+		//(Dont want to have the event more than once)
+		return hasConflict(new ScheduleElement(s),0,elements.size()-1,false);
 	}
 	
 	public boolean addElement(ScheduleElement element)
@@ -59,7 +55,7 @@ class Schedule {
 	
 	public boolean hasConflict(ScheduleElement element)
 	{
-		return hasConflict(element,0,elements.size()-1);
+		return hasConflict(element,0,elements.size()-1,true);
 	}
 	
 	
@@ -96,7 +92,7 @@ class Schedule {
 	}
 	
 	//helper function for binary search
-	private boolean hasConflict(ScheduleElement element,int start, int end)
+	private boolean hasConflict(ScheduleElement element,int start, int end, boolean time)
 	{
 		if (start>end) //base case
 		{
@@ -104,7 +100,13 @@ class Schedule {
 		}
 		
 		int index = (start+end)/2;
+		
+		
 		int temp = element.compareTo(elements.get(index));
+		if (!time)
+		{
+			temp = element.getName().compareTo(elements.get(index).getName());
+		}
 		
 		if (temp == 0)
 		{
@@ -113,10 +115,10 @@ class Schedule {
 		
 		if (temp < 0)
 		{
-			return hasConflict(element,start,index-1);
+			return hasConflict(element,start,index-1,time);
 		}
 		
-		return hasConflict(element,index+1,end);
+		return hasConflict(element,index+1,end,time);
 	}
 	
 	//Function insert to help us keep the elements sorted

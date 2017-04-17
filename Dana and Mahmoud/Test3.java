@@ -90,7 +90,10 @@ public class Test3 {
 		
 		System.out.println();
 		Math261.print();
-	
+		System.out.println();
+		
+		System.out.println(Math261.getTimings().contains("Math 261"));
+		System.out.println(Math261.getTimings().contains("Math 241"));
 		
 	}
 
