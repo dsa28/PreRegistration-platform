@@ -7,7 +7,7 @@ public abstract class MessageClient {
 
 
 
-
+//Notice: this is not really needed? Can be substitued by sendMessage()
     void saveMessageToDB( Message M )
     {
      //Save message content and info into the database
