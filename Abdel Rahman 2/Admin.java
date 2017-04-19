@@ -10,6 +10,10 @@ int threshold;
     {
     
     }
+    public void setthreshold(int t)
+    {
+        threshold=t;
+    }
     public int getthreshold()
     {
         return threshold;
