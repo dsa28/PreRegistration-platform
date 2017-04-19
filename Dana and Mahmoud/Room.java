@@ -137,7 +137,7 @@ public class Room {
 	private Room ()
 	{
 		name= "TBA";
-		maxCapacity = 0;
+		maxCapacity = 100;
 	}
 	
 	
