@@ -22,6 +22,7 @@ public class ddb {
    Statement stmt = con.createStatement();
    
    ResultSet rs = stmt.executeQuery("select CourseID from course where CourseID = '"+ co + "'");
+   //TODO: fix the query to get the capacity and the rest of the information.
   //select the required course
    con.close();
    return rs.getString(0);
@@ -110,7 +111,8 @@ public class ddb {
 			//Open a connection using JDBC driver name and database URL
 	   Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DataStorage","root","root");
 	   Statement stmt = con.createStatement();
-	   //select the Message sent
+	   //select the Message sent (most recent one for this user)
+	   //TODO: if demanded, select a message with a specific timestamp
 	   ResultSet rs = stmt.executeQuery("select MessageBody from messages where UserID = '"+ userid + "'");
 	  
 	   con.close();
@@ -124,7 +126,8 @@ public class ddb {
 			return "Error";
 	      }
 		}
- public void StoreMessage(String messa, int userid, String datetimee) {
+ public void StoreMessage(String messa, int userid, String datetimee) {//date time should be of the following format
+ 								       //yyyy-mm-dd hh:mm:ss.xxxxx
 
 		try{    
 			Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
