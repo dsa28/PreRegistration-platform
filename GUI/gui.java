@@ -11,13 +11,22 @@ public class gui {
     private JPasswordField passwordInput;
     private JButton loginButton;
     private JLabel errorLabel;
-    private JTabbedPane navigation;
-    private JButton refreshButton;
-    private JButton inboxButton;
+    private JTabbedPane states;
+    private JTabbedPane menu;
+    private JTable table1;
+    private JTextField enterCourseNumberTextField;
+    private JTextField courseAbbreviation;
+    private JButton searchButton;
+    private JTable table2;
+    private JTable table3;
+    private JList list1;
 
-    //Navigation Tabs Indices --Not sure if needed but it does help...
+    //States Tabs Indices --Not sure if needed but it does help...
     private int loginTab = 0;
-    private int dashboardTab = 1;
+    private int userBackendTab = 1;
+
+    //Menus Tabs Indices
+    //int ...
 
 
     // private UserSystem userSystem;
@@ -41,7 +50,7 @@ public class gui {
                 {
                     errorLabel.setText("");
                     //Goes to next tab (dashboard of index 1)
-                    navigation.setSelectedIndex(1);
+                    states.setSelectedIndex(1);
                 }
 
                 else
@@ -55,6 +64,7 @@ public class gui {
             }
         });
     }
+
 
 
 }
