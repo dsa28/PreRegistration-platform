@@ -1,6 +1,9 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.Normalizer;
 
 /**
  * Created by mahmoudsafar on 4/17/17.
@@ -34,37 +37,21 @@ public class gui {
     //Below should include all functions to be defined and triggered upon any input being done on the form
 
 
-    //Login Button Pressed
     public gui() {
-        loginButton.addMouseListener(new MouseAdapter() {
+        loginButton.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                //Submit input to user system
-                String username = usernameInput.getText();
-                char[] password = passwordInput.getPassword();
-                //boolean check = userSystem.checkCredentials(username, password);
-                /*
-                if (check == true)
-                {
-                    errorLabel.setText("");
-                    //Goes to next tab (dashboard of index 1)
-                    states.setSelectedIndex(1);
-                }
-
-                else
-                {
-                errorLabel.setText("Please enter correct credentials");
-                }
-                 */
-
-
-
+            public void actionPerformed(ActionEvent e) {
+                states.setSelectedIndex(1);
             }
         });
     }
 
-
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("MyForm");
+        frame.setContentPane(new gui().form);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
 }
