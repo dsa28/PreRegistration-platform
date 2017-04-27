@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class preregistration {
     public User_System system;
-    public gui gui;
+    public gui2 gui;
     public static void main(String arg[])
     {
         preregistration k=new preregistration();
@@ -13,6 +13,6 @@ public class preregistration {
     preregistration()
     {
         system=new User_System();
-        gui=new gui(system);
+        gui=new gui2(system);
     }
 }

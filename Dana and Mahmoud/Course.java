@@ -109,10 +109,15 @@ public class Course {
 		return false; //not enough places :( 
 	}
 	
-	public void increaseCapacity(int extra) 
+	public boolean increaseCapacity(int extra) 
 	{
 		//Increase capacity by the specified amount
-		capacity += extra;
+		if (capacity + extra < room.getMaxCapacity())
+		{
+			capacity += extra;
+			return true;
+		}
+		return false;
 	}
 	
 	public int getRegistered()
@@ -134,7 +139,7 @@ public class Course {
 	void print()
 	{
 		System.out.println("Name: " + name);
-		System.out.println("Teacher: " + teacher.name);
+		System.out.println("Teacher: " + teacher.getName());
 		System.out.println("Capacity: " + capacity);
 		System.out.println("Registered: " + getRegistered());
 		System.out.println("Location: " + room.getName());

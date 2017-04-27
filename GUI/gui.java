@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -27,6 +29,7 @@ public class gui {
 
     //Login Button Pressed
     public gui() {
+    	
         loginButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -55,6 +58,19 @@ public class gui {
             }
         });
     }
+    
+    public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+				gui gui  = new gui();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 
 
 }

@@ -4,7 +4,10 @@ import java.util.Vector;
  * Created by mahmoudsafar on 4/15/17.
  */
 public abstract class MessageClient {
-
+	String username = "";
+	String password = "";
+	String dbName = "";
+	
 
 
 //Notice: this is not really needed? Can be substitued by sendMessage()

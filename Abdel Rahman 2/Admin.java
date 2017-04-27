@@ -16,6 +16,6 @@ int threshold;
     }
     public void setroom(Course c, Room room)
     {
-        c.setRoom(room)
+        c.setRoom(room);
     }
 }
