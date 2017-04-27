@@ -1,11 +1,9 @@
 import javax.swing.*;
-<<<<<<< HEAD
 
 import java.awt.EventQueue;
-=======
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
->>>>>>> origin/master
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.Normalizer;
@@ -43,31 +41,16 @@ public class gui {
 
 
     public gui() {
-<<<<<<< HEAD
-    	
-        loginButton.addMouseListener(new MouseAdapter() {
-=======
-        loginButton.addActionListener(new ActionListener() {
->>>>>>> origin/master
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                states.setSelectedIndex(1);
-            }
-        });
-    }
-    
-    public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-				gui gui  = new gui();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
+    	
+    
+
+       loginButton.addActionListener(new ActionListener() {
+           @Override
+            public void actionPerformed(ActionEvent e) {
+                states.setSelectedIndex(1);}});
+    
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MyForm");
