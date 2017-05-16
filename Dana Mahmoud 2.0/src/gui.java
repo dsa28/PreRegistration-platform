@@ -262,7 +262,7 @@ public class gui {
 
         //Teacher's Requests
         //Note: Usually new requests are pending
-        //TODO: Mahmoud:: Will create a new class "request"
+        //Mahmoud:: Will create a new class "request" :: Done.
         refreshRequestsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -271,7 +271,7 @@ public class gui {
 
                 Vector<String> requestStrings = new Vector<>();
                 for (Request r: requests) {
-                    requestStrings.add( r.getRequestID() + ":: From: " + r.getStudentID() + ", Course: " + r.getCourseName() +
+                    requestStrings.add( r.getRequestID() + "::["+ r.getState() + "] From: " + r.getStudentID() + ", Course: " + r.getCourseName() +
                     ", Request Note: " + r.getRequestText());
                 }
 
