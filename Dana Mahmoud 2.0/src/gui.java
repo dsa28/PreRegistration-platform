@@ -2,6 +2,9 @@ import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by mahmoudsafar on 4/17/17.
@@ -42,8 +45,8 @@ public class gui {
     private JTextField TEACHERaddCourseCapacity;
     private JTextField TEACHERaddCourseID;
     private JButton submitButton;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField TEACHERaddCourseTimeTill;
+    private JTextField TEACHERaddCourseTimeFrom;
     private JCheckBox mondayCheckBox;
     private JCheckBox tuesdayCheckBox;
     private JCheckBox wednesdayCheckBox;
@@ -51,11 +54,20 @@ public class gui {
     private JCheckBox fridayCheckBox;
     private JButton TEACHERlogoutButton;
     private JButton ADMINlogoutButton;
+    private JCheckBox TEACHERaddCourseIsVoted;
+    private JList TEACHERcoursesManager;
+    private JButton deleteButton;
+    private JButton setButton;
+    private JList TEACHERrequests;
+    private JButton approveButton;
+    private JButton rejectButton;
+    private JButton refreshButton;
+    private JButton refreshRequestsButton;
+    private JCheckBox saturdayCheckBox;
 
 
     private data_storage databaseConnection = new data_storage();
-   //TODO: Usersystem
-    // private User_System user_system = new User_St
+    private RequestClient requestClient = new RequestClient();
 
 
 
@@ -190,6 +202,117 @@ public class gui {
                 //Logging out as null
                 loggedInUser = null;
                 states.setSelectedIndex(0);
+            }
+        });
+
+        //Teacher adds a course (either to be set or asked to be voted on).
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String courseName = TEACHERaddCourseName.getText();
+                int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
+                int timeFrom = Integer.parseInt(TEACHERaddCourseTimeFrom.getText());
+                int timeTill = Integer.parseInt(TEACHERaddCourseTimeTill.getText());
+
+                ArrayList<Boolean> days = new ArrayList<Boolean>();
+                days.add(mondayCheckBox.isSelected());
+                days.add(tuesdayCheckBox.isSelected());
+                days.add(wednesdayCheckBox.isSelected());
+                days.add(thursdayCheckBox.isSelected());
+                days.add(fridayCheckBox.isSelected());
+                days.add(saturdayCheckBox.isSelected());
+
+                boolean needsVoting = TEACHERaddCourseIsVoted.isSelected();
+
+                //TODO: Add to courses list.
+
+
+
+            }
+        });
+
+
+        //Teacher Course Manager
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Get all courses added
+                //TEACHERcoursesManager.setListData( [A list here should be inserted] );
+
+            }
+        });
+
+        setButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List listOfCourses = TEACHERcoursesManager.getSelectedValuesList();
+                //TODO: For every course in the above list, set the course (not voted on anymore)
+                // (This probably needs a new member in the course class).
+
+
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List listOfCourses = TEACHERcoursesManager.getSelectedValuesList();
+                //TODO: Delete the course from the Teacher's courses using the above list
+            }
+        });
+
+        //Teacher's Requests
+        //Note: Usually new requests are pending
+        //TODO: Mahmoud:: Will create a new class "request"
+        refreshRequestsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Get requests sent from students to the teacher
+                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+
+                Vector<String> requestStrings = new Vector<>();
+                for (Request r: requests) {
+                    requestStrings.add( r.getRequestID() + ":: From: " + r.getStudentID() + ", Course: " + r.getCourseName() +
+                    ", Request Note: " + r.getRequestText());
+                }
+
+                TEACHERcoursesManager.setListData(requestStrings);
+
+            }
+        });
+        approveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List listOfCourses =  TEACHERcoursesManager.getSelectedValuesList();
+                //Approve the above requests
+                String req;
+                for (Object request:
+                     listOfCourses) {
+
+                    req = (String) request;
+                    req = req.substring(0, req.indexOf("::"));
+
+                    requestClient.approveCourse(Integer.parseInt(req));
+
+
+                }
+            }
+        });
+        rejectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List listOfCourses = TEACHERcoursesManager.getSelectedValuesList();
+                //Reject the above requests
+                String req;
+                for (Object request:
+                        listOfCourses) {
+
+                    req = (String) request;
+                    req = req.substring(0, req.indexOf("::"));
+
+                    requestClient.rejectCourse(Integer.parseInt(req));
+
+
+                }
             }
         });
     }
