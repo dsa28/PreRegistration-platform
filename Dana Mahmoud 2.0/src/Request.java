@@ -47,6 +47,11 @@ public class Request {
         return requestID;
     }
 
+    public String getState()
+    {
+        return state.getState();
+    }
+
     public void rejectRequest()
     {
         state = RequestState.Rejected;
@@ -56,6 +61,7 @@ public class Request {
     {
         state = RequestState.Approved;
     }
+
 
 
 
