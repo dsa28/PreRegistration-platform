@@ -25,6 +25,21 @@ public class Test {
         find = db.retrieveCourse("Math219");
         find.print();
 
+        System.out.println(db.addUser("Dana", 201501455, "password", "Student"));
+        System.out.println(db.addUser("Mahmoud", 20150000, "password", "Student"));
+        System.out.println(db.addUser("Zaraket", 201501455,"password", "Teacher"));
+
+        System.out.println();
+
+        db.printUsers();
+
+        db.addUser("Zaraket", 2012000000, "password", "Teacher");
+        db.addUser("Florian", 202132435, "password", "Teacher");
+        db.addUser("Antonio", 201400000,"password", "Student");
+
+        System.out.println();
+
+        db.printUsers();
 
     }
 }

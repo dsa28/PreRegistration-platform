@@ -8,13 +8,18 @@ public class Teacher extends user {
     ArrayList<String> courses;
     data_storage d;
     int dborder;
-    boolean isconflict=false;//to be edited
 
+    Teacher(String name, int id, String password)
+    {
+        super(name,id,password);
+    }
 
     Teacher()
     {
-        name = "TBA";
+
     }
+
+
 
    /* Teacher(ArrayList<String> course, data_storage dd, int order)
     {

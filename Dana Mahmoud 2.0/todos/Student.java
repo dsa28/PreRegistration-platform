@@ -8,7 +8,13 @@ public class Student extends user {
     ArrayList<String> courses;
     ddb d;
     int dborder;
-    boolean isconflict=false;
+
+
+    Student(String name, int id, String password)
+    {
+        super(name,id,password);
+    }
+
 /*
     Student(ArrayList<String> course, ddb dd, int order)
     {
