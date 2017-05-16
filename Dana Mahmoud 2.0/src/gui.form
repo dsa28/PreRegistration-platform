@@ -163,7 +163,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <grid id="a8ee3" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="a8ee3" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Schedule"/>
@@ -171,9 +171,9 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="74c51" class="javax.swing.JList" binding="list5" default-binding="true">
+                      <component id="74c51" class="javax.swing.JList" binding="STUDENTschedule">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="50"/>
                           </grid>
                         </constraints>
@@ -181,12 +181,28 @@
                       </component>
                       <vspacer id="e25d1">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </vspacer>
+                      <component id="fbc28" class="javax.swing.JButton" binding="refreshScheduleButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Refresh Schedule"/>
+                        </properties>
+                      </component>
+                      <component id="ec74f" class="javax.swing.JButton" binding="removeCoursesButton" default-binding="true">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Remove Courses"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
-                  <grid id="e9d03" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="e9d03" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Courses"/>
@@ -205,7 +221,7 @@
                       <grid id="d73c7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties/>
                         <border type="none"/>
@@ -217,7 +233,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="9bc93" class="javax.swing.JList" binding="list4" default-binding="true">
+                              <component id="9bc93" class="javax.swing.JList" binding="searchResults">
                                 <constraints/>
                                 <properties/>
                               </component>
@@ -225,34 +241,12 @@
                           </scrollpane>
                         </children>
                       </grid>
-                      <component id="59818" class="javax.swing.JTextField" binding="enterCourseNumberTextField" default-binding="true">
+                      <component id="1f703" class="javax.swing.JButton" binding="searchCourseButton" default-binding="true">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Enter Course Number"/>
-                        </properties>
-                      </component>
-                      <component id="3c36" class="javax.swing.JTextField" binding="courseAbbreviation">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <name value=""/>
-                          <text value="Enter Course Abbreviation"/>
-                          <toolTipText value=""/>
-                        </properties>
-                      </component>
-                      <component id="1f703" class="javax.swing.JButton" binding="searchButton" default-binding="true">
-                        <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Search"/>
+                          <text value="Search Course"/>
                         </properties>
                       </component>
                       <hspacer id="ad727">
@@ -260,130 +254,105 @@
                           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                       </hspacer>
-                      <component id="9b2d8" class="javax.swing.JButton" binding="registerButton" default-binding="true">
+                      <component id="9b2d8" class="javax.swing.JButton" binding="addCourseButton" default-binding="true">
                         <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Register"/>
+                          <text value="Add Course"/>
+                        </properties>
+                      </component>
+                      <component id="59818" class="javax.swing.JTextField" binding="enterCourseNameTextField">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="Enter Course Name"/>
                         </properties>
                       </component>
                     </children>
                   </grid>
-                  <grid id="d3798" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="8c689" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Notifications"/>
+                      <tabbedpane title="Requests"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <scrollpane id="ec143">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <component id="e14fd" class="javax.swing.JList" binding="list1" default-binding="true">
-                            <constraints/>
-                            <properties>
-                              <model>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                                <item value="21/12/2017    New Course: EECE 999"/>
-                                <item value="21/12/2016    New Course: EECE 200"/>
-                                <item value="21/12/2015    New Course: EECE 402"/>
-                                <item value="21/12/2012    New Course: EECE 403"/>
-                              </model>
-                            </properties>
-                          </component>
-                        </children>
-                      </scrollpane>
-                    </children>
-                  </grid>
-                  <grid id="563a1" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <tabbedpane title="Dashboard"/>
-                    </constraints>
-                    <properties>
-                      <preferredSize width="24" height="24"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="c6a74" class="javax.swing.JLabel" binding="statistic1Label">
+                      <component id="670a8" class="javax.swing.JLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Statistic 1"/>
+                          <text value="Teacher's ID"/>
                         </properties>
                       </component>
-                      <component id="7e241" class="javax.swing.JLabel" binding="statistic2Label">
+                      <vspacer id="d3c3">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                         </constraints>
-                        <properties>
-                          <text value="Statistic 2"/>
-                        </properties>
-                      </component>
-                      <component id="32099" class="javax.swing.JList" binding="list2" default-binding="true">
+                      </vspacer>
+                      <component id="67f4c" class="javax.swing.JTextField" binding="requestTeacherID">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
                         <properties/>
+                      </component>
+                      <component id="1df4a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Course Name"/>
+                        </properties>
+                      </component>
+                      <component id="b8e6c" class="javax.swing.JTextField" binding="requestCourseName">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="d03f" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Request Note"/>
+                        </properties>
+                      </component>
+                      <component id="d5f1b" class="javax.swing.JTextField" binding="requestNote">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="b5963" class="javax.swing.JButton" binding="sendRequestButton" default-binding="true">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Send Request"/>
+                        </properties>
                       </component>
                     </children>
                   </grid>
                   <grid id="1b77f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Inbox"/>
+                      <tabbedpane title="Inbox (not done)"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -403,7 +372,7 @@
                   <grid id="9142" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Send Message"/>
+                      <tabbedpane title="Send Message (not done)"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -740,6 +709,37 @@
                         </constraints>
                         <properties>
                           <text value="Refresh Requests"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="e73a1" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <tabbedpane title="Request Statistics"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="f34bd" class="javax.swing.JList" binding="requestStatistics">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <vspacer id="f79da">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="25d75" class="javax.swing.JButton" binding="refreshStatisticsButton" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Refresh Statistics"/>
                         </properties>
                       </component>
                     </children>
