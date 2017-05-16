@@ -69,6 +69,20 @@ public class gui {
 
     //Below should include all functions to be defined and triggered upon any input being done on the form
 
+    /*
+    Things we should implement:
+    1) Admin can add users -- done
+    2) Teachers can add courses -- done
+    3) Login as admin, teacher or student --teacher and student done, still need admin
+
+    4) Search for courses -- partially done
+
+    5) Students can pre-register courses
+    6) Check schedules
+    7) Get messages
+    8) Send messages
+
+     */
 
     public gui() {
 
@@ -90,13 +104,13 @@ public class gui {
                 String password = new String(passwordChar);
                 //boolean access = true;
 
-                user User = databaseConnection.checkCredentials(userID,password);
+                loggedInUser = databaseConnection.checkCredentials(userID,password);
                 //access= databaseConnection.checkCredentials( userID, password);
                 //boolean access = databaseConnection;
 
-                if (User !=null)
+                if (loggedInUser !=null)
                 {
-                    states.setSelectedIndex(User.getTab()); //get tab according to user type
+                    states.setSelectedIndex(loggedInUser.getTab()); //get tab according to user type
 
 
                     loginError.setText("");
@@ -149,6 +163,31 @@ public class gui {
                 Course course = new Course(courseName+courseID, capacity);
 
                 databaseConnection.addCourse(course);
+
+            }
+        });
+
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                loggedInUser = null; //log out of logged in user
+                states.setSelectedIndex(0); //go back to login screen
+
+
+            }
+        });
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //TODO fix this for multiple courses..
+               Course course = null;
+
+                course = databaseConnection.retrieveCourse(courseAbbreviation.getText() + enterCourseNumberTextField.getText());
+                course.print();
+
+              // while(course != null);
 
             }
         });

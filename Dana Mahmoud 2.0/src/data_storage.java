@@ -17,6 +17,7 @@ public class data_storage {
     private HashMap<Teacher,Teacher> teachers;
     private HashMap<Student,Student> students;
 
+
     private HashMap<user,user> users;
 
 
@@ -31,7 +32,7 @@ public class data_storage {
            }
        }
 
-       return new Course("No results");
+       return null;
     }
 
     public void addCourse (Course course)
