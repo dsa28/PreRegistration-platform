@@ -82,6 +82,20 @@ public class data_storage {
         }
     }
 
+    public user checkCredentials(int userid, String password) {
+
+
+        //boolean credCorrect = false;
+
+       user tempuser = users.get(new user(userid));
+
+       if (tempuser != null)
+       {
+            return tempuser.checkPassword(password);
+       }
+        return tempuser;
+    }
+
     public data_storage()
     {
         courses = new ArrayList<Course>();
@@ -203,40 +217,7 @@ public class data_storage {
         }
     }
 
-    public boolean checkCredentials(int userid, String password) {
 
-
-        boolean credCorrect = false;
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
-            //Open a connection using JDBC driver name and database URL
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DataStorage","root","root");
-            Statement stmt = con.createStatement();
-            //check if row exists
-            ResultSet rs = stmt.executeQuery("select UserID, UserPassword from users where UserID='"+userid+"' AND UserPassword='"+password+"'");
-
-
-            if (rs.getFetchSize() != 0)
-            {
-
-                credCorrect = true;
-            }
-
-
-
-            System.out.println("DONE");
-            con.close();
-            return credCorrect;
-        }
-        catch(Exception e)
-        {
-            //Handle errors for Class.forName
-            e.printStackTrace();
-            System.out.println("Not working");
-        }
-        return credCorrect;
-    }
 
 
 

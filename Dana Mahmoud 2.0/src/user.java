@@ -8,6 +8,16 @@ public class user {
     private String password;
 
 
+    public user checkPassword(String password)
+    {
+        if (this.password.equals(password))
+        {
+            return this;
+        }
+
+        return null;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -30,6 +40,15 @@ public class user {
         System.out.println(name);
     }
 
+    public int getTab()
+    {
+        //Function get tab is used for GUI
+        //it is used to determine the type of GUI to be used depending on the user
+        //1 for student
+        //2 for teacher
+        //3 for admin
+        return 3;
+    }
 
     String getName()
     {
@@ -40,6 +59,11 @@ public class user {
     {
         name = "TBA";
         id = 0;
+    }
+
+    user(int id)
+    {
+        this.id = id;
     }
 
     user(String name, int id, String password)

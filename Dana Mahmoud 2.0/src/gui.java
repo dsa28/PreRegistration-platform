@@ -43,17 +43,15 @@ public class gui {
     private JTextField TEACHERaddCourseCapacity;
     private JTextField TEACHERaddCourseID;
     private JButton submitButton;
-    private ddb databaseConnection = new ddb();
+
+
+    private data_storage databaseConnection = new data_storage();
    //TODO: Usersystem
     // private User_System user_system = new User_St
 
 
 
    private user loggedInUser;
-
-
-
-
 
 
 
@@ -74,6 +72,13 @@ public class gui {
 
     public gui() {
 
+        databaseConnection.addUser("Dana", 201501455, "password", "Student");
+        databaseConnection.addUser("Antonio", 201402582, "password", "Student");
+        databaseConnection.addUser("Fares", 20160000, "password", "Student");
+        databaseConnection.addUser("Zaraket", 1, "password", "Teacher");
+        databaseConnection.addUser("Karameh", 2, "password", "Teacher");
+
+
 
         //Login State
         loginButton.addActionListener(new ActionListener() {
@@ -83,34 +88,19 @@ public class gui {
                 int userID = Integer.parseInt(userIDinput.getText());
 
                 char[] passwordChar = passwordInput.getPassword();
-
                 String password = new String(passwordChar);
+                //boolean access = true;
 
+                user User = databaseConnection.checkCredentials(userID,password);
+                //access= databaseConnection.checkCredentials( userID, password);
+                //boolean access = databaseConnection;
 
-                boolean access = databaseConnection.checkCredentials( userID, password);
-
-                if (access == true)
+                if (User !=null)
                 {
-                    //TODO: User details should be added;
-                    String name;
-                    int id;
-                    String role;
-                    loggedInUser = new user();
-                    if( role == "Student") {
-                        states.setSelectedIndex(1);
-                    }
-                    else if (role == "Teacher")
-                    {
-                        states.setSelectedIndex(2);
-                    }
-                    else if (role == "Admin")
-                    {
-                        states.setSelectedIndex(3);
-                    }
-                    else
-                    {
-                        //Impossible
-                    }
+
+
+                    states.setSelectedIndex(User.getTab()); //get tab according to user type
+
 
                     loginError.setText("");
                     System.out.println("Logged In as " + userIDinput.getText());
@@ -170,6 +160,8 @@ public class gui {
     }
 
     public static void main(String[] args) {
+
+
         JFrame frame = new JFrame("MyForm");
         frame.setContentPane(new gui().form);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

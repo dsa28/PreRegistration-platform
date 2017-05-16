@@ -9,6 +9,12 @@ public class Teacher extends user {
     data_storage d;
     int dborder;
 
+    @Override
+    public int getTab()
+    {
+        return 2;
+    }
+
     Teacher(String name, int id, String password)
     {
         super(name,id,password);

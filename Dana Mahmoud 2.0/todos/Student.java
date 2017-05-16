@@ -9,6 +9,11 @@ public class Student extends user {
     ddb d;
     int dborder;
 
+    @Override
+    public int getTab()
+    {
+        return 1;
+    }
 
     Student(String name, int id, String password)
     {

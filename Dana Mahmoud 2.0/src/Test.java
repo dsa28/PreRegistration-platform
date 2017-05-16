@@ -24,6 +24,7 @@ public class Test {
 
         find = db.retrieveCourse("Math219");
         find.print();
+        System.out.println();
 
         System.out.println(db.addUser("Dana", 201501455, "password", "Student"));
         System.out.println(db.addUser("Mahmoud", 20150000, "password", "Student"));
@@ -40,6 +41,29 @@ public class Test {
         System.out.println();
 
         db.printUsers();
+        System.out.println();
 
+
+        user test;
+
+        test = db.checkCredentials(201501455, "password");
+        if (test!= null)
+        {
+            test.print();
+        }
+        else
+        {
+            System.out.println("not valid");
+        }
+
+        test = db.checkCredentials(201501455, "selena");
+        if (test!= null)
+        {
+            test.print();
+        }
+        else
+        {
+            System.out.println("not valid");
+        }
     }
 }
