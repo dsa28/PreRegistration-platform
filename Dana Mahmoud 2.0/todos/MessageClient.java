@@ -9,7 +9,7 @@ public abstract class MessageClient {
 	String dbName = "";
 	
 
-
+/*
 //Notice: this is not really needed? Can be substitued by sendMessage()
     void saveMessageToDB( Message M )
     {
@@ -64,5 +64,5 @@ public abstract class MessageClient {
         db.deleteMessage(M);
         //Should we delete db as an object? to avoid memory overflow?
     }
-
+*/
 }

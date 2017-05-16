@@ -3,12 +3,20 @@ import java.util.ArrayList;
 /**
  * Created by user on 16-Apr-17.
  */
-public class Teacher {
+public class Teacher extends user {
+
     ArrayList<String> courses;
     data_storage d;
     int dborder;
     boolean isconflict=false;//to be edited
-    Teacher(ArrayList<String> course, data_storage dd, int order)
+
+
+    Teacher()
+    {
+        name = "TBA";
+    }
+
+   /* Teacher(ArrayList<String> course, data_storage dd, int order)
     {
         courses=course;
         d=dd;
@@ -26,5 +34,5 @@ public class Teacher {
         for(int i=0;i<courses.size();i++)
             if(courses.get(i).equals(c))
                 courses.remove(c);
-    }
+    }*/
 }

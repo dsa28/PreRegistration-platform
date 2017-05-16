@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Course {
+public class Course  {
 	
 	/**
 	 * Course is used to represent a course.
@@ -42,6 +42,11 @@ public class Course {
 		return room;
 	}
 	
+
+	public boolean equals(String s)
+	{
+		return (name.equals(s));
+	}
 
 	public boolean setRoom(Room room)
 	{

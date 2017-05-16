@@ -95,12 +95,14 @@ public class gui {
                 //CHeck if credentials are correct and login
             }
         });
+
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Logout and go back to login screen
                 
-        });
+        }});
+
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

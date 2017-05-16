@@ -4,9 +4,11 @@ import java.util.ArrayList;
  * Created by user on 05-Apr-17.
  */
 public class User_System {
+
     public data_storage db;
     ArrayList<ArrayList<String>> a;
-    User_System()
+
+   /* User_System()
     {
         db = new data_storage();
         a= db.alluserinfo;//useless, just for testing
@@ -32,4 +34,5 @@ public class User_System {
             System.out.println();
         }
     }
+    */
 }

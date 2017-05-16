@@ -4,10 +4,12 @@ import java.util.ArrayList;
  * Created by user on 16-Apr-17.
  */
 public class Student extends user {
-ArrayList<String> courses;
-ddb d;
-int dborder;
-boolean isconflict=false;
+
+    ArrayList<String> courses;
+    ddb d;
+    int dborder;
+    boolean isconflict=false;
+/*
     Student(ArrayList<String> course, ddb dd, int order)
     {
         courses=course;
@@ -26,5 +28,5 @@ boolean isconflict=false;
         for(int i=0;i<courses.size();i++)
             if(courses.get(i).equals(c))
                 courses.remove(c);
-    }
+    }*/
 }
