@@ -84,9 +84,8 @@ public class data_storage {
 
     public user checkCredentials(int userid, String password) {
 
-
-        //boolean credCorrect = false;
-
+        //Check if user info is valid and return in
+        //TODO move to User_System or remove user system
        user tempuser = users.get(new user(userid));
 
        if (tempuser != null)
@@ -106,75 +105,8 @@ public class data_storage {
 
     }
 
-    public void StoreCourse(String co, String timee, int capacityy, int userid, String roomid) {
-
-            try{
-            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
-            //Open a connection using JDBC driver name and database URL
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prereg","root","root");
-            Statement stmt = con.createStatement();
-            //store the required course
-            stmt.executeUpdate("insert into 'course' (CourseID, CourseTime, Capacity, UserID, RoomID) VALUE ( '"+ co + "','"+ timee + "','" + capacityy + "','" + userid + "','" + roomid + "')");
-            System.out.println("DONE");
-            con.close();
-
-        }
-        catch(Exception e)
-        {
-            //Handle errors for Class.forName
-            e.printStackTrace();
-        }
-    }
-    public String[] RetreiveSchedule(int userid) {
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
-            //Open a connection using JDBC driver name and database URL
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prereg","root","root");
-            Statement stmt = con.createStatement();
-            //select all the courses associated with the teacher or student id (UserID)
-            ResultSet rs = stmt.executeQuery("select CourseID from courseuser where UserID = '"+ userid + "'");
 
 
-            String result[]=new String[10];
-            int i = 0;
-            while(rs.next())
-            {
-                result[i] = rs.getString(0);
-                i++;
-            }//put the results in an array of strings assuming a maximum of
-            //10 courses a student or teacher can take
-            System.out.println("DONE");
-            con.close();
-            return result;
-        }
-        catch(Exception e)
-        {
-            //Handle errors for Class.forName
-            e.printStackTrace();
-            String result[]=new String[10];
-            return result;
-        }
-    }
-    public void StoreCourseForUser(String co, int userid) {
-        try{
-            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
-            //Open a connection using JDBC driver name and database URL
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prereg","root","root");
-            Statement stmt = con.createStatement();
-            //insert a course for a user taking it
-            //to implement an entire schedule insert each course for the user seperately
-            //and then the selects takes them all.
-            stmt.executeUpdate("insert into 'courseuser' (CourseID, UserID) VALUE ( '"+ co + "','" + userid  + "')");
-            System.out.println("DONE");
-            con.close();
-        }
-        catch(Exception e)
-        {
-            //Handle errors for Class.forName
-            e.printStackTrace();
-        }
-    }
     public String retrieveMessages(int userid) {
 
         try{

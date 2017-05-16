@@ -77,8 +77,7 @@ public class gui {
         databaseConnection.addUser("Fares", 20160000, "password", "Student");
         databaseConnection.addUser("Zaraket", 1, "password", "Teacher");
         databaseConnection.addUser("Karameh", 2, "password", "Teacher");
-
-
+        databaseConnection.addUser("Bazzi", 3, "password", "Teacher");
 
         //Login State
         loginButton.addActionListener(new ActionListener() {
@@ -97,8 +96,6 @@ public class gui {
 
                 if (User !=null)
                 {
-
-
                     states.setSelectedIndex(User.getTab()); //get tab according to user type
 
 
@@ -138,10 +135,6 @@ public class gui {
                     ADMINisAdded.setText("User already exists");
                 }
 
-
-
-
-
             }
         });
 
@@ -153,7 +146,9 @@ public class gui {
                 String courseID = TEACHERaddCourseID.getText();
                 int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
 
+                Course course = new Course(courseName+courseID, capacity);
 
+                databaseConnection.addCourse(course);
 
             }
         });
