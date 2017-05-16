@@ -32,16 +32,25 @@ public class gui {
     private JButton registerButton;
     private JList list5;
     private JLabel loginError;
-    private JTextField textField1;
+    private JTextField ADMINaddUserID;
+    private JTextField ADMINaddUserPassword;
+    private JButton addUserButton;
+    private JTextField ADMINaddUserName;
+    private JComboBox ADMINuserRole;
+    private JLabel ADMINisAdded;
+    private JTabbedPane tabbedPane1;
+    private JTextField TEACHERaddCourseName;
+    private JTextField TEACHERaddCourseCapacity;
+    private JTextField TEACHERaddCourseID;
+    private JButton submitButton;
     private ddb databaseConnection = new ddb();
+   //TODO: Usersystem
+    // private User_System user_system = new User_St
 
-    //Demo Variables
-    public String usernameStudent = "Mariam Jeha";
-    int studentCourseCount = 3;
-    int studentCoursesTakenCount = 4;
-    Vector<String> studentCourses = new Vector<String>(1);
 
-    String toNJA;
+
+   private user loggedInUser;
+
 
 
 
@@ -64,74 +73,9 @@ public class gui {
 
 
     public gui() {
-        //Demo Purposes
-
-        studentCourses.add("ACCT 210 -------- Malik -------- MWF 11->12 -------- Cap: 15/30");
-        studentCourses.add("Fina 210 -------- Lama -------- TR 1->12:30 -------- Cap: 30/30");
-        studentCourses.add("Math 201 -------- Jack -------- MWF 9->10 -------- Cap: 20/40");
-        studentCourses.add("Math 210 -------- Bassam -------- TR 9->10 -------- Cap: 38/40");
-
-        //Dashboard
-        loggedInAsUsernameLabel.setText("Welcome, " + usernameStudent);
-        statistic1Label.setText("Number of Current Courses: " + String.valueOf(studentCourseCount));
-        statistic2Label.setText(String.valueOf("Number of Courses Taken So Far: " +studentCoursesTakenCount));
-        list5.setListData(studentCourses);
 
 
-        //Messages
-        final String[] inbox = {"New Course: EECE 437 | From: Fadi Z. | Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                "New Course: EECE 430 | From: Nadia M. | Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                "New Course: EECE 503X | From: Wassim M. | Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                "New Course: EECE 550 | From: Maria K. | Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-                "New Course: EECE 100 | From: Alia K. | Content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. "};
-
-
-        list3.setListData(inbox);
-
-
-
-
-
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                states.setSelectedIndex(0);
-                if (userIDinput.getText() == "nja10")
-                {
-                    inbox[0] = toNJA;
-
-                }
-            }
-        });
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String [] geolCourses = {"GEOL 205 -------- Raghida -------- MWF 12->1 -------- Cap: 21/30", "GEOL 205 -------- Raghida -------- MWF 1->2 -------- Cap: 10/30"};
-
-                list4.setListData(geolCourses);
-
-            }
-        });
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Add to courses
-
-                if(list4.getSelectedValue() == "GEOL 205 -------- Raghida -------- MWF 12->1 -------- Cap: 21/30") {
-                    studentCourses.add("GEOL 205 -------- Raghida -------- MWF 12->1 -------- Cap: 22/30");
-                    list5.setListData(studentCourses);
-                }
-
-
-            }
-        });
-        sendMessageButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                toNJA = textPane1.getText();
-                textPane1.setText("Message Sent Successfully!");
-            }
-        });
+        //Login State
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,24 +86,85 @@ public class gui {
 
                 String password = new String(passwordChar);
 
-                System.out.println(password);
-
 
                 boolean access = databaseConnection.checkCredentials( userID, password);
 
                 if (access == true)
                 {
-                    states.setSelectedIndex(1);
+                    //TODO: User details should be added;
+                    String name;
+                    int id;
+                    String role;
+                    loggedInUser = new user();
+                    if( role == "Student") {
+                        states.setSelectedIndex(1);
+                    }
+                    else if (role == "Teacher")
+                    {
+                        states.setSelectedIndex(2);
+                    }
+                    else if (role == "Admin")
+                    {
+                        states.setSelectedIndex(3);
+                    }
+                    else
+                    {
+                        //Impossible
+                    }
+
                     loginError.setText("");
                     System.out.println("Logged In as " + userIDinput.getText());
                     System.out.println(password);
+
                 }
                 else
                 {
                     loginError.setText("Wrong Credentials");
-                    System.out.println("Wrong Credentials, log in unsuccessful");
+                    System.out.println("Wrong Credentials, log in unsuccessful::" + userID + ", " +password);
 
                 }
+            }
+        });
+
+
+        //Admin adds a user
+        addUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String userName = ADMINaddUserName.getText();
+                String password = ADMINaddUserPassword.getText();
+                int userID = Integer.parseInt(ADMINaddUserID.getText());
+                String userRole = String.valueOf(ADMINuserRole.getSelectedItem());
+
+                boolean isAdded = databaseConnection.addUser(userName, userID, password, userRole);
+
+                if (isAdded == true)
+                {
+                    ADMINisAdded.setText("User was Added");
+                }
+                else
+                {
+                    ADMINisAdded.setText("User already exists");
+                }
+
+
+
+
+
+            }
+        });
+
+        //Teacher: Add Courses
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String courseName = TEACHERaddCourseName.getText();
+                String courseID = TEACHERaddCourseID.getText();
+                int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
+
+
+
             }
         });
     }
