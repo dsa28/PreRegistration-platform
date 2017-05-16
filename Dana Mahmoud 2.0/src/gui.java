@@ -1,4 +1,3 @@
-import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,22 +16,17 @@ public class gui {
     private JLabel errorLabel;
     private JTabbedPane states;
     private JTabbedPane menu;
-    private JTextField enterCourseNumberTextField;
-    private JTextField courseAbbreviation;
-    private JButton searchButton;
+    private JTextField enterCourseNameTextField;
+    private JButton searchCourseButton;
 
-    private JList list1;
     private JButton STUDENTlogoutButton;
-    private JLabel statistic1Label;
-    private JLabel statistic2Label;
-    private JList list2;
     private JList list3;
     private JTextField receiverUsernameTextField;
     private JTextPane textPane1;
     private JButton sendMessageButton;
-    private JList list4;
-    private JButton registerButton;
-    private JList list5;
+    private JList searchResults;
+    private JButton addCourseButton;
+    private JList STUDENTschedule;
     private JLabel loginError;
     private JTextField ADMINaddUserID;
     private JTextField ADMINaddUserPassword;
@@ -64,6 +58,14 @@ public class gui {
     private JButton refreshButton;
     private JButton refreshRequestsButton;
     private JCheckBox saturdayCheckBox;
+    private JButton refreshScheduleButton;
+    private JButton removeCoursesButton;
+    private JTextField requestTeacherID;
+    private JTextField requestCourseName;
+    private JTextField requestNote;
+    private JButton sendRequestButton;
+    private JList requestStatistics;
+    private JButton refreshStatisticsButton;
 
 
     private data_storage databaseConnection = new data_storage();
@@ -315,6 +317,143 @@ public class gui {
                 }
             }
         });
+
+        //Request Statistics
+        refreshStatisticsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vector<String> courses = new Vector<>();
+                Vector<Integer> count = new Vector<Integer>();
+
+                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+
+                for (Request r:
+                     requests) {
+
+                    if(!courses.contains(r.getCourseName()))
+                    {
+                        courses.add(r.getCourseName());
+                        count.add(1);
+                    }
+                    else
+                    {
+                     count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
+                    }
+
+                }
+
+                Vector <String> coursesStrings = new Vector<>();
+                for (int i = 0; i < courses.size(); i++){
+
+                    coursesStrings.add(courses.get(i) + ": " +count.get(i) + " requests.");
+                }
+
+                requestStatistics.setListData(coursesStrings);
+
+            }
+        });
+
+        //Student Schedule
+        refreshScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Get all courses from student's schedule
+                Vector<String> courses = new Vector<>();
+                //Get Courses, and add them to courses
+
+                //TODO:Put the strings into courses in this format:
+                //foreach..
+                //{
+                //courses.add(courseName + ": @" + courseTime + " " + courseDates + " in " + room + " [" + teacherName +"] [Status:" + isConflict +"]");
+                //}
+
+                //STUDENTschedule.setListData(courses);
+            }
+        });
+
+        removeCoursesButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Remove courses from student
+                List listOfCourses =  STUDENTschedule.getSelectedValuesList();
+                //Approve the above requests
+                String c;
+                for (Object course:
+                        listOfCourses) {
+
+                    c = (String) course;
+                    c = c.substring(0, c.indexOf(": @"));
+
+                    //remove course from student schedule having name c
+
+
+                }
+
+            }
+        });
+
+        //TODO:Courses Search
+        searchCourseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String search = enterCourseNameTextField.getText();
+                //TODO: Get all courses with search term
+                Vector<String> courses = new Vector<>();
+                //Get Courses, and add them to courses
+
+                //TODO:Put the strings into courses in this format:
+                //foreach..
+                //{
+                //courses.add(courseName + ": @" + courseTime + " " + courseDates + " in " + room + " [" + teacherName +"] [Status:" + isConflict +"]");
+                //}
+
+                searchResults.setListData(courses);
+
+
+            }
+        });
+
+        //TODO:Add course to student schedule
+        addCourseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                List listOfCourses =  searchResults.getSelectedValuesList();
+                //Approve the above requests
+                String c;
+                for (Object course:
+                        listOfCourses) {
+
+                    c = (String) course;
+                    c = c.substring(0, c.indexOf(": @"));
+
+                    //TODO:add courses to schedule of name c
+
+
+                }
+
+
+            }
+
+        });
+
+        //Student Requests
+        sendRequestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int teacherID = Integer.parseInt(requestTeacherID.getText());
+                String courseName = requestCourseName.getText();
+                String note = requestNote.getText();
+                int studentID = loggedInUser.getId();
+
+                requestClient.sendRequest(teacherID, studentID, courseName, note);
+
+
+            }
+        });
+
     }
 
     public static void main(String[] args) {
