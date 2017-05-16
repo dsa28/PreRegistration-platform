@@ -7,6 +7,11 @@ public class user {
     private int id;
     private String password;
 
+    public int getId()
+    {
+        return id;
+    }
+
 
     public user checkPassword(String password)
     {
