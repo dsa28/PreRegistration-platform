@@ -1,7 +1,7 @@
+import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 /**
  * Created by mahmoudsafar on 4/17/17.
@@ -19,8 +19,7 @@ public class gui {
     private JButton searchButton;
 
     private JList list1;
-    private JButton logoutButton;
-    private JLabel loggedInAsUsernameLabel;
+    private JButton STUDENTlogoutButton;
     private JLabel statistic1Label;
     private JLabel statistic2Label;
     private JList list2;
@@ -43,6 +42,15 @@ public class gui {
     private JTextField TEACHERaddCourseCapacity;
     private JTextField TEACHERaddCourseID;
     private JButton submitButton;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JCheckBox mondayCheckBox;
+    private JCheckBox tuesdayCheckBox;
+    private JCheckBox wednesdayCheckBox;
+    private JCheckBox thursdayCheckBox;
+    private JCheckBox fridayCheckBox;
+    private JButton TEACHERlogoutButton;
+    private JButton ADMINlogoutButton;
 
 
     private data_storage databaseConnection = new data_storage();
@@ -69,20 +77,6 @@ public class gui {
 
     //Below should include all functions to be defined and triggered upon any input being done on the form
 
-    /*
-    Things we should implement:
-    1) Admin can add users -- done
-    2) Teachers can add courses -- done
-    3) Login as admin, teacher or student --teacher and student done, still need admin
-
-    4) Search for courses -- partially done
-
-    5) Students can pre-register courses
-    6) Check schedules
-    7) Get messages
-    8) Send messages
-
-     */
 
     public gui() {
 
@@ -160,35 +154,42 @@ public class gui {
                 String courseID = TEACHERaddCourseID.getText();
                 int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
 
-                Course course = new Course(courseName+courseID, capacity);
+                //TODO: Uncomment, and fix.
+                //Course course = new Course(courseName+courseID, capacity);
 
-                databaseConnection.addCourse(course);
+                //databaseConnection.addCourse(course);
+
+            }
+        });
+
+        //Logout Actions:
+        //Teacher
+        TEACHERlogoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Logging out as null
+                loggedInUser = null;
+                states.setSelectedIndex(0);
 
             }
         });
 
-        logoutButton.addActionListener(new ActionListener() {
+        //Admin
+        ADMINlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                loggedInUser = null; //log out of logged in user
-                states.setSelectedIndex(0); //go back to login screen
-
+                //Logging out as null
+                loggedInUser = null;
+                states.setSelectedIndex(0);
 
             }
         });
-        searchButton.addActionListener(new ActionListener() {
+        STUDENTlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                //TODO fix this for multiple courses..
-               Course course = null;
-
-                course = databaseConnection.retrieveCourse(courseAbbreviation.getText() + enterCourseNumberTextField.getText());
-                course.print();
-
-              // while(course != null);
-
+                //Logging out as null
+                loggedInUser = null;
+                states.setSelectedIndex(0);
             }
         });
     }
