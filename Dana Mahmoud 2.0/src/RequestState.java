@@ -3,15 +3,20 @@
  */
 public enum RequestState {
 
-    Pending(0),
-    Approved(1),
-    Rejected(2);
+    Pending("Pending"),
+    Approved("Approved"),
+    Rejected("Rejected");
 
-    private int num;
+    private String state;
 
-    RequestState(int num)
+    RequestState(String state)
     {
-        this.num = num;
+        this.state = state;
+    }
+
+    public String getState()
+    {
+        return state;
     }
 
 
