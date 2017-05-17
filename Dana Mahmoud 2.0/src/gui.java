@@ -103,11 +103,43 @@ public class gui {
     11) Check requests -- done
      */
 
+    //Helper functions to avoid duplicate code
     public void logout()
     {
         loggedInUser = null; //No longer a logged in user
         states.setSelectedIndex(0); //go back to login screen
     }
+
+    public void approveCourse(boolean param)
+    {
+
+        List listOfCourses = TEACHERrequests.getSelectedValuesList();
+        //Reject the above requests
+        String req;
+
+        for (Object request: listOfCourses) {
+
+            req = (String) request;
+            req = req.substring(0, req.indexOf("::"));
+
+            if (param)
+            {
+                requestClient.approveCourse(Integer.parseInt(req));
+            }
+            else
+            {
+                requestClient.rejectCourse(Integer.parseInt(req));
+            }
+
+
+        }
+
+
+    }
+
+
+
+
 
     public gui() {
 
@@ -307,21 +339,7 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                List listOfCourses = TEACHERrequests.getSelectedValuesList();
-                //Reject the above requests
-                String req;
-
-                for (Object request:
-                        listOfCourses) {
-
-                    req = (String) request;
-                    req = req.substring(0, req.indexOf("::"));
-
-                    requestClient.approveCourse(Integer.parseInt(req));
-
-
-                }
-
+                approveCourse(true);
             }
         });
 
@@ -330,20 +348,7 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                List listOfCourses = TEACHERrequests.getSelectedValuesList();
-                //Reject the above requests
-                String req;
-
-                for (Object request:
-                        listOfCourses) {
-
-                    req = (String) request;
-                    req = req.substring(0, req.indexOf("::"));
-
-                    requestClient.rejectCourse(Integer.parseInt(req));
-
-
-                }
+                approveCourse(false);
             }
         });
 

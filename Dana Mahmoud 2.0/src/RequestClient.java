@@ -30,7 +30,7 @@ public class RequestClient {
 
         for (; fence<requests.size(); fence++)
         {
-            
+
             if(requests.get(fence).getTeacherID() == id)
             {
 
