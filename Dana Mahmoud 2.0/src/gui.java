@@ -270,7 +270,7 @@ public class gui {
 
                 Course course = new Course(courseName);
                 course.increaseCapacity(capacity);
-                
+
                 ScheduleElement time;
 
                 int i =0;
@@ -288,10 +288,12 @@ public class gui {
                 }
 
 
-                course.setTeacher((Teacher)loggedInUser);
-                //Because teacher tab is only accessible to teachers, loggedInUser is necessarily a teacher
+                if (course.setTeacher((Teacher)loggedInUser))//Because teacher tab is only accessible to teachers, loggedInUser is necessarily a teacher
+                {
+                    databaseConnection.addCourse(course); //only add a course if the teacher's schedule allows it
+                }
 
-                databaseConnection.addCourse(course);
+                databaseConnection.printCourses();
 
             }
         });
@@ -377,6 +379,9 @@ public class gui {
                 approveCourse(false);
             }
         });
+
+
+
 
 
 

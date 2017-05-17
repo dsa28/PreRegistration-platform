@@ -20,6 +20,8 @@ public class data_storage {
     private HashMap<user,user> users;
 
 
+    private int fence; //itterator for courses
+
     //Add and retrieve courses
     public Course retrieveCourse(String course) {
 
@@ -82,6 +84,16 @@ public class data_storage {
         }
     }
 
+    public void printCourses()
+    {
+        for (int i=0; i<courses.size(); i++)
+        {
+            courses.get(i).print();
+            System.out.println();
+            System.out.println();
+        }
+    }
+
     public user checkCredentials(int userid, String password) {
 
         //Check if user info is valid and return in
@@ -102,6 +114,7 @@ public class data_storage {
         students = new HashMap<Student,Student>();
 
         users = new HashMap<user,user>();
+        fence = 0;
 
     }
 
