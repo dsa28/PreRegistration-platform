@@ -93,8 +93,8 @@ public class gui {
 
     4) Search for courses --  done
 
-    5) Students can pre-register courses
-    6) Check schedules
+    5) Students can pre-register courses --done
+    6) Check schedules  -- done
     7) Get messages
     8) Send messages
 
@@ -201,6 +201,17 @@ public class gui {
         EECE437.addTiming(time2);
         EECE437.addTiming(time3);
 
+        Math210.addTiming(time1);
+        Math210.addTiming(time2);
+        Math210.addTiming(time3);
+
+        time1.setTime(12,00);
+        time2.setTime(12,00);
+        time3.setTime(12,00);
+
+        Math227.addTiming(time1);
+        Math227.addTiming(time2);
+        Math227.addTiming(time3);
 
         databaseConnection.addCourse(Math227);
         databaseConnection.addCourse(Math251);
@@ -515,6 +526,7 @@ public class gui {
         searchCourseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String search = enterCourseNameTextField.getText();
 
 
@@ -557,10 +569,12 @@ public class gui {
                     c = (String) courses;
                     c = c.substring(0, c.indexOf(": @"));
 
+
                     databaseConnection.start();
                     course =databaseConnection.retrieveCourse(c);
 
-                    loggedInUser.addcourse(course);
+
+                    System.out.println(loggedInUser.addcourse(course));
 
 
                 }

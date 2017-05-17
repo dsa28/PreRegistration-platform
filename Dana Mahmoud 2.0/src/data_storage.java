@@ -32,7 +32,7 @@ public class data_storage {
 
        for (; fence<courses.size(); fence++)
        {
-           if (courses.get(fence).equals(course))
+           if (courses.get(fence).equals(course) || course.equals("")) //either same name or blank field--retrieves all courses
            {
                fence++; //move to the next object to avoid infinite loop
                return courses.get(fence-1);
