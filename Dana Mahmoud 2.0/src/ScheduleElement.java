@@ -167,7 +167,7 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		String s = "";
 		if (name != null && name != "") //theres a name
 		{
-			s = name + " ";
+			s = name + ": "; //Mahmoud: Added ":" to delimit
 		}
 		return s + getTimeString();
 
