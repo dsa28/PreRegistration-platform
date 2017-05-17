@@ -101,6 +101,8 @@ public class gui {
     9) Request courses -- done
     10) Approve/reject courses --done
     11) Check requests -- done
+
+    12) Teachers add new course -- done
      */
 
     //Helper functions to avoid duplicate code
@@ -303,8 +305,13 @@ public class gui {
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: Get all courses added
-                //TEACHERcoursesManager.setListData( [A list here should be inserted] );
+
+
+               // TEACHERrequests.setModel(model);
+                TEACHERrequests.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                TEACHERrequests.setVisible(true);
+
+
 
             }
         });
@@ -460,22 +467,32 @@ public class gui {
             }
         });
 
-        //TODO:Courses Search
+        //TODO:Courses Search-- fix it
         searchCourseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String search = enterCourseNameTextField.getText();
-                //TODO: Get all courses with search term
-                Vector<String> courses = new Vector<>();
-                //Get Courses, and add them to courses
 
-                //TODO:Put the strings into courses in this format:
-                //foreach..
-                //{
-                //courses.add(courseName + ": @" + courseTime + " " + courseDates + " in " + room + " [" + teacherName +"] [Status:" + isConflict +"]");
-                //}
 
-                searchResults.setListData(courses);
+                DefaultListModel model = new DefaultListModel();
+
+                databaseConnection.start();
+                Course c = databaseConnection.retrieveCourse(search);
+
+
+                while(c!= null) {
+
+                    model.addElement(c.toString());
+                    c = databaseConnection.retrieveCourse(search);
+
+                }
+
+
+                searchResults.setModel(model);
+                searchResults.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                searchResults.setVisible(true);
+
+
 
 
             }

@@ -155,6 +155,11 @@ public class Course  {
 		System.out.println("Registered: " + getRegistered());
 		System.out.println("Location: " + room.getName());
 	}
+
+	public String toString()
+	{
+		return name + " " + teacher + " ";
+	}
 	
 	Course(String name)
 	{

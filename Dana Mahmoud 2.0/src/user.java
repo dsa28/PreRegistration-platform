@@ -13,6 +13,11 @@ public class user {
     protected Schedule schedule;
     protected ArrayList<Course> courses;
 
+    public String toString()
+    {
+        return name;
+    }
+
 
     public int getId()
     {

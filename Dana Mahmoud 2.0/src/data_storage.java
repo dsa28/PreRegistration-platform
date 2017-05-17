@@ -22,18 +22,24 @@ public class data_storage {
 
     private int fence; //itterator for courses
 
+    public void start()
+    {
+        fence = 0; //itterator
+    }
+
     //Add and retrieve courses
     public Course retrieveCourse(String course) {
 
-       for (int i=0; i<courses.size();i++)
+       for (; fence<courses.size(); fence++)
        {
-           if (courses.get(i).equals(course))
+           if (courses.get(fence).equals(course))
            {
-               return courses.get(i);
+               fence++; //move to the next object to avoid infinite loop
+               return courses.get(fence-1);
            }
        }
 
-       return new Course("No results");
+       return null;
     }
 
     public void addCourse (Course course)
