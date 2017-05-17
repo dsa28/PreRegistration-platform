@@ -1,16 +1,48 @@
+import java.util.ArrayList;
+
 /**
  * Created by user on 16-Apr-17.
  */
 
 public class user {
 
-    private String name;
-    private int id;
-    private String password;
+    protected String name;
+    protected int id;
+    protected String password;
+
+    protected Schedule schedule;
+    protected ArrayList<Course> courses;
+
 
     public int getId()
     {
         return id;
+    }
+
+    //Both students and teachers need to be able to add courses
+    public boolean addcourse(Course c) {
+
+        if (schedule.addElement(c.getTimings())) //course got added fine, no conflict
+        {
+            courses.add(c); //added course
+            return true;
+        }
+
+        return false;
+    }
+
+
+    //both students and teachers need to be able to remove courses
+    public void removecourse(String c)
+    {
+        for(int i=0;i<courses.size();i++)
+        {
+            if (courses.get(i).equals(c)) {
+                courses.remove(i);
+            }
+        }
+
+        schedule.remove(c); //need to also remove course from schedule
     }
 
 
@@ -70,12 +102,14 @@ public class user {
     user(int id)
     {
         this.id = id;
+        courses = new ArrayList<Course>();
+        schedule = new Schedule();
     }
 
     user(String name, int id, String password)
     {
+        this(id);
         this.name = name;
-        this.id = id;
         this.password = password;
     }
 
