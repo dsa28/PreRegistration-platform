@@ -39,8 +39,6 @@ public class gui {
     private JTextField TEACHERaddCourseCapacity;
     private JTextField TEACHERaddCourseID;
     private JButton submitButton;
-    private JTextField TEACHERaddCourseTimeTill;
-    private JTextField TEACHERaddCourseTimeFrom;
     private JCheckBox mondayCheckBox;
     private JCheckBox tuesdayCheckBox;
     private JCheckBox wednesdayCheckBox;
@@ -66,6 +64,10 @@ public class gui {
     private JButton sendRequestButton;
     private JList requestStatistics;
     private JButton refreshStatisticsButton;
+    private JComboBox TEACHERfromHrs;
+    private JComboBox TEACHERfromMins;
+    private JComboBox TEACHERtillHrs;
+    private JComboBox TEACHERtillMins;
 
 
     private data_storage databaseConnection = new data_storage();
@@ -73,23 +75,25 @@ public class gui {
 
 
 
-   private user loggedInUser;
+    private user loggedInUser;
 
 
-
-    //
-
-    //States Tabs Indices --Not sure if needed but it does help...
-    private int loginTab = 0;
-    private int userBackendTab = 1;
-
-    //Menus Tabs Indices
-    //int ...
-
-
+    //Not used?
     // private UserSystem userSystem;
 
     //Below should include all functions to be defined and triggered upon any input being done on the form
+
+    /*
+    Things we should implement:
+    1) Admin can add users -- done
+    2) Teachers can add courses -- done
+    3) Login as admin, teacher or student --teacher and student done, still need admin
+    4) Search for courses -- partially done
+    5) Students can pre-register courses
+    6) Check schedules
+    7) Get messages
+    8) Send messages
+     */
 
 
     public gui() {
@@ -160,21 +164,6 @@ public class gui {
             }
         });
 
-        //Teacher: Add Courses
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String courseName = TEACHERaddCourseName.getText();
-                String courseID = TEACHERaddCourseID.getText();
-                int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
-
-                //TODO: Uncomment, and fix.
-                //Course course = new Course(courseName+courseID, capacity);
-
-                //databaseConnection.addCourse(course);
-
-            }
-        });
 
         //Logout Actions:
         //Teacher
@@ -213,8 +202,10 @@ public class gui {
             public void actionPerformed(ActionEvent e) {
                 String courseName = TEACHERaddCourseName.getText();
                 int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
-                int timeFrom = Integer.parseInt(TEACHERaddCourseTimeFrom.getText());
-                int timeTill = Integer.parseInt(TEACHERaddCourseTimeTill.getText());
+                int timeFromHour = Integer.parseInt(String.valueOf(TEACHERfromHrs.getSelectedItem()));
+                int timeFromMinutes = Integer.parseInt(String.valueOf(TEACHERfromMins.getSelectedItem()));
+                int timeTillHour = Integer.parseInt(String.valueOf(TEACHERtillHrs.getSelectedItem()));
+                int timeTillMinutes = Integer.parseInt(String.valueOf(TEACHERtillMins.getSelectedItem()));
 
                 ArrayList<Boolean> days = new ArrayList<Boolean>();
                 days.add(mondayCheckBox.isSelected());
