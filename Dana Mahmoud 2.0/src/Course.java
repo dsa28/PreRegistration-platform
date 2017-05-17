@@ -158,7 +158,9 @@ public class Course  {
 
 	public String toString()
 	{
-		return name + " " + teacher + " ";
+
+
+		return name + ": @" + timings.toString() + " [" + teacher + "]";
 	}
 	
 	Course(String name)

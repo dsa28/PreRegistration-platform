@@ -177,6 +177,35 @@ public class gui {
         databaseConnection.addUser("Karameh", 2, "password", "Teacher");
         databaseConnection.addUser("Bazzi", 3, "password", "Teacher");
 
+        Course Math227 = new Course("Math 227");
+        Course Math251 = new Course("Math 251");
+        Course Math210 = new Course("Math 210");
+        Course EECE437 = new Course("EECE 437");
+
+        ScheduleElement time1 = new ScheduleElement();
+        ScheduleElement time2;
+        ScheduleElement time3;
+
+        time1.setStartTime(10,00);
+        time1.setEndTime(10,50);
+
+        time1.setDay(Day.Monday);
+
+        time2 = time1.clone();
+        time2.setDay(Day.Wednesday);
+
+        time3 = time1.clone();
+        time3.setDay(Day.Friday);
+
+        EECE437.addTiming(time1);
+        EECE437.addTiming(time2);
+        EECE437.addTiming(time3);
+
+
+        databaseConnection.addCourse(Math227);
+        databaseConnection.addCourse(Math251);
+        databaseConnection.addCourse(Math210);
+        databaseConnection.addCourse(EECE437);
 
 
         //Login State
@@ -282,7 +311,7 @@ public class gui {
                 int timeTillMinutes = Integer.parseInt(String.valueOf(TEACHERtillMins.getSelectedItem()));
 
                 ArrayList<Boolean> days = new ArrayList<Boolean>();
-                
+
                 days.add(false); //No courses on sunday, its always false
                 days.add(mondayCheckBox.isSelected());
                 days.add(tuesdayCheckBox.isSelected());
@@ -321,7 +350,7 @@ public class gui {
                     databaseConnection.addCourse(course); //only add a course if the teacher's schedule allows it
                 }
 
-                databaseConnection.printCourses();
+
 
             }
         });
@@ -456,13 +485,7 @@ public class gui {
 
                 schedule(STUDENTschedule);
 
-                //TODO:Put the strings into courses in this format:
-                //foreach..
-                //{
-                //courses.add(courseName + ": @" + courseTime + " " + courseDates + " in " + room + " [" + teacherName +"] [Status:" + isConflict +"]");
-                //}
 
-                //STUDENTschedule.setListData(courses);
             }
         });
 
@@ -525,15 +548,19 @@ public class gui {
             public void actionPerformed(ActionEvent e) {
 
                 List listOfCourses =  searchResults.getSelectedValuesList();
+                Course course;
                 //Approve the above requests
                 String c;
-                for (Object course:
+                for (Object courses:
                         listOfCourses) {
 
-                    c = (String) course;
+                    c = (String) courses;
                     c = c.substring(0, c.indexOf(": @"));
 
-                    //TODO:add courses to schedule of name c
+                    databaseConnection.start();
+                    course =databaseConnection.retrieveCourse(c);
+
+                    loggedInUser.addcourse(course);
 
 
                 }

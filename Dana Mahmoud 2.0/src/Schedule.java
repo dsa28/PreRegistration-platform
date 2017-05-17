@@ -38,7 +38,24 @@ class Schedule {
 		return null;
 	}
 
+	public String toString()
+	{
+		String s = "";
 
+		if (elements.size() == 0)
+		{
+			return s;
+		}
+
+		for (int i=0; i<elements.size()-1;i++)
+		{
+			s += elements.get(i).getTimeString() + ", ";
+		}
+
+		s += elements.get(elements.size()-1).getTimeString();
+
+		return s;
+	}
 
 	public boolean contains(String s)
 	{
@@ -79,7 +96,7 @@ class Schedule {
 	{
 		return hasConflict(element,0,elements.size()-1,true);
 	}
-	
+
 	
 	public boolean hasConflict(Schedule schedule)
 	{

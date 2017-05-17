@@ -167,12 +167,16 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		String s = "";
 		if (name != null && name != "") //theres a name
 		{
-			s = name+ " ";
+			s = name + " ";
 		}
-		return s + day + " " + startTime + "-" +  endTime;
-	
+		return s + getTimeString();
+
 	}
-	
+
+	public String getTimeString()
+	{
+		return day + " " + startTime + "-" +  endTime;
+	}
 	//Constructors
 	ScheduleElement()
 	{
