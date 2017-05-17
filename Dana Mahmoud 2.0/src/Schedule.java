@@ -11,13 +11,19 @@ class Schedule {
 	 *-hasConflict()
 	 *-remove(String name) -- remove all events with the name "name"
 	 *-contains(String name) -- checks if the schedule has events with the name "name"
+	 *-toString()
 	 *
 	 *A schedule is basically an ordered list of elements with binary search and insertion
 	 */
 	
 	private ArrayList<ScheduleElement> elements;
 	
-	
+
+	public String toString()
+	{
+		
+	}
+
 	public boolean contains(String s)
 	{
 		//Can check if a schedule contains a certain element

@@ -91,7 +91,7 @@ public class gui {
     2) Teachers can add courses -- done
     3) Login as admin, teacher or student --teacher and student done, still need admin
 
-    4) Search for courses -- partially done
+    4) Search for courses --  done
 
     5) Students can pre-register courses
     6) Check schedules
