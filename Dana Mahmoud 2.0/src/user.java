@@ -18,6 +18,11 @@ public class user {
         return name;
     }
 
+    public Schedule getSchedule()
+    {
+        return schedule;
+    }
+
 
     public int getId()
     {

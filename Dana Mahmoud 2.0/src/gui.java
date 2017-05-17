@@ -139,6 +139,28 @@ public class gui {
 
     }
 
+    void schedule(JList list) //displays schedule for students or teachers
+    {
+        DefaultListModel model = new DefaultListModel();
+
+        loggedInUser.getSchedule().start();
+        ScheduleElement r = loggedInUser.getSchedule().getElement();
+
+
+        while(r!= null) {
+
+            model.addElement(r.toString());
+            r = loggedInUser.getSchedule().getElement();
+
+        }
+
+
+        list.setModel(model);
+        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        list.setVisible(true);
+
+    }
+
 
 
 
@@ -260,6 +282,8 @@ public class gui {
                 int timeTillMinutes = Integer.parseInt(String.valueOf(TEACHERtillMins.getSelectedItem()));
 
                 ArrayList<Boolean> days = new ArrayList<Boolean>();
+                
+                days.add(false); //No courses on sunday, its always false
                 days.add(mondayCheckBox.isSelected());
                 days.add(tuesdayCheckBox.isSelected());
                 days.add(wednesdayCheckBox.isSelected());
@@ -287,6 +311,8 @@ public class gui {
 
                         course.addTiming(time); //add timing
                     }
+
+                    i++;
                 }
 
 
@@ -306,11 +332,7 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
-               // TEACHERrequests.setModel(model);
-                TEACHERrequests.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-                TEACHERrequests.setVisible(true);
-
+                schedule(TEACHERcoursesManager);
 
 
             }
@@ -431,9 +453,8 @@ public class gui {
         refreshScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: Get all courses from student's schedule
-                Vector<String> courses = new Vector<>();
-                //Get Courses, and add them to courses
+
+                schedule(STUDENTschedule);
 
                 //TODO:Put the strings into courses in this format:
                 //foreach..
@@ -467,7 +488,7 @@ public class gui {
             }
         });
 
-        //TODO:Courses Search-- fix it
+
         searchCourseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,28 +1,44 @@
 import java.util.ArrayList;
 
 class Schedule {
-	
-	/**
-	 *Schedule class is used to store events (ScheduleElement) by timing.
-	 *It can also detect conflicts.
-	 *
-	 *Schedule implements the following methods:
-	 *-addElement()
-	 *-hasConflict()
-	 *-remove(String name) -- remove all events with the name "name"
-	 *-contains(String name) -- checks if the schedule has events with the name "name"
-	 *-toString()
-	 *
-	 *A schedule is basically an ordered list of elements with binary search and insertion
-	 */
-	
-	private ArrayList<ScheduleElement> elements;
-	
 
-	public String toString()
-	{
-		
+	/**
+	 * Schedule class is used to store events (ScheduleElement) by timing.
+	 * It can also detect conflicts.
+	 * <p>
+	 * Schedule implements the following methods:
+	 * -addElement()
+	 * -hasConflict()
+	 * -remove(String name) -- remove all events with the name "name"
+	 * -contains(String name) -- checks if the schedule has events with the name "name"
+	 *
+	 * Itterator functions- to go through the elements of the schedule one by one--
+	 * helpful for displaying the schedule for example
+	 *
+	 * -start()
+	 * -getElement()
+	 *
+	 * A schedule is basically an ordered list of elements with binary search and insertion
+	 */
+
+	private ArrayList<ScheduleElement> elements;
+	private int fence; //itterator for schedule
+
+	public void start() {
+		fence = 0;
 	}
+
+	public ScheduleElement getElement() //returns the next element if any-- returns null otherwise
+	{
+		if (fence < elements.size())
+		{
+			fence++;
+			return elements.get(fence-1);
+		}
+		return null;
+	}
+
+
 
 	public boolean contains(String s)
 	{
