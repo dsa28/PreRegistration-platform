@@ -267,13 +267,10 @@ public class gui {
 
                 boolean needsVoting = TEACHERaddCourseIsVoted.isSelected();
 
+
                 Course course = new Course(courseName);
                 course.increaseCapacity(capacity);
-
-                course.setTeacher((Teacher)loggedInUser);
-                //Because teacher tab is only accessible to teachers, loggedInUser is necessarily a teacher
-
-
+                
                 ScheduleElement time;
 
                 int i =0;
@@ -291,7 +288,10 @@ public class gui {
                 }
 
 
-                course.print();
+                course.setTeacher((Teacher)loggedInUser);
+                //Because teacher tab is only accessible to teachers, loggedInUser is necessarily a teacher
+
+                databaseConnection.addCourse(course);
 
             }
         });

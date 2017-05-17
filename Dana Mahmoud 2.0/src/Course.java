@@ -131,10 +131,15 @@ public class Course  {
 		return students.size();
 	}
 	
-	public void setTeacher(Teacher teacher)
+	public boolean setTeacher(Teacher teacher)
 	{
-		this.teacher = teacher;
-		//TODO: add course to teacher's schedule...
+		if (teacher.addcourse(this))
+		{
+			this.teacher = teacher;
+			return true;
+		}
+
+		return false;
 	}
 	
 	public Teacher getTeacher()
