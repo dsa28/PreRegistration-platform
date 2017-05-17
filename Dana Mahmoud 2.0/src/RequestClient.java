@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class RequestClient {
 
     ArrayList<Request> requests;
+    int fence; //use this as an itterator for the RequestClient class
 
     public void sendRequest(int teacherID, int studentID, String courseName, String requestText)
     {
@@ -14,17 +15,33 @@ public class RequestClient {
         requests.add(r);
     }
 
-    public ArrayList<Request> getRequestsForTeacher (int id)
+    public void start()
     {
-        ArrayList<Request> studentRequests = new ArrayList<Request>();
-        for (Request r: requests) {
-            if(r.getTeacherID() == id)
+        fence = 0;
+    }
+
+    public Request getNextRequest(user User)
+    {
+        return getNextRequest(User.getId());
+    }
+
+    public Request getNextRequest(int id)
+    {
+
+        for (; fence<requests.size(); fence++)
+        {
+            
+            if(requests.get(fence).getTeacherID() == id)
             {
-                studentRequests.add(r);
+
+                Request found =  requests.get(fence);
+                fence++; //we finished evaluating this result, need to move on to the next to avoid infinite loops
+
+                return found;
             }
         }
 
-        return studentRequests;
+        return null; //not found
     }
 
 
@@ -57,6 +74,7 @@ public class RequestClient {
      RequestClient()
     {
         requests = new ArrayList<Request>();
+        fence = 0;
     }
 
 

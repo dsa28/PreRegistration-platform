@@ -90,11 +90,17 @@ public class gui {
     1) Admin can add users -- done
     2) Teachers can add courses -- done
     3) Login as admin, teacher or student --teacher and student done, still need admin
+
     4) Search for courses -- partially done
+
     5) Students can pre-register courses
     6) Check schedules
     7) Get messages
     8) Send messages
+
+    9) Request courses -- done
+    10) Approve/reject courses --done
+    11) Check requests -- done
      */
 
     public void logout()
@@ -270,17 +276,22 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Get requests sent from students to the teacher
-                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
 
 
                 DefaultListModel model = new DefaultListModel();
 
 
-                for (Request r: requests) {
+                requestClient.start();
+                Request r = requestClient.getNextRequest(loggedInUser);;
 
-                    model.addElement(r.toString());
+
+              while(r!= null) {
+
+                  model.addElement(r.toString());
+                  r = requestClient.getNextRequest(loggedInUser);
 
                 }
+
 
                 TEACHERrequests.setModel(model);
                 TEACHERrequests.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -343,7 +354,7 @@ public class gui {
                 Vector<String> courses = new Vector<>();
                 Vector<Integer> count = new Vector<Integer>();
 
-                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+              /*)  ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
 
                 for (Request r: requests) {
 
@@ -366,7 +377,7 @@ public class gui {
                 }
 
                 requestStatistics.setListData(coursesStrings);
-
+*/
             }
         });
 
