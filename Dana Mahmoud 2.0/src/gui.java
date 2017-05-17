@@ -512,9 +512,10 @@ public class gui {
                         listOfCourses) {
 
                     c = (String) course;
-                    c = c.substring(0, c.indexOf(": @"));
+                    c = c.substring(0, c.indexOf(":"));
 
                     //remove course from student schedule having name c
+                    loggedInUser.removecourse(c);
 
 
                 }
