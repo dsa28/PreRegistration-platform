@@ -11,15 +11,11 @@ public class Request {
     private String courseName;
     private String requestText;
 
-    Request(int teacherID, int studentID, String courseName, String requestText, int requestID)
-    {
-        this.teacherID = teacherID;
-        this.studentID = studentID;
-        this.courseName = courseName;
-        this.requestText = requestText;
-        state = RequestState.Pending;
-        this.requestID = requestID;
 
+    public String toString()
+    {
+        return getRequestID() + "::[" + getState() + "] From: " + getStudentID() + ", Course: " + getCourseName() +
+                ", Request Note: " + getRequestText();
     }
 
     public int getTeacherID()
@@ -63,6 +59,16 @@ public class Request {
     }
 
 
+    Request(int teacherID, int studentID, String courseName, String requestText, int requestID)
+    {
+        this.teacherID = teacherID;
+        this.studentID = studentID;
+        this.courseName = courseName;
+        this.requestText = requestText;
+        state = RequestState.Pending;
+        this.requestID = requestID;
+
+    }
 
 
 

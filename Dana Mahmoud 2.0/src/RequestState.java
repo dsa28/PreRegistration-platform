@@ -9,15 +9,18 @@ public enum RequestState {
 
     private String state;
 
+    public String getState()
+    {
+        return state;
+    }
+
+
     RequestState(String state)
     {
         this.state = state;
     }
 
-    public String getState()
-    {
-        return state;
-    }
+
 
 
 }

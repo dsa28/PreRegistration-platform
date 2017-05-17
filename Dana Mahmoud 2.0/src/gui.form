@@ -772,7 +772,9 @@
                             <preferred-size width="150" height="50"/>
                           </grid>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <model/>
+                        </properties>
                       </component>
                       <vspacer id="ae6e9">
                         <constraints>

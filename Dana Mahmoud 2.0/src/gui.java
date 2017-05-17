@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -95,15 +97,25 @@ public class gui {
     8) Send messages
      */
 
+    public void logout()
+    {
+        loggedInUser = null; //No longer a logged in user
+        states.setSelectedIndex(0); //go back to login screen
+    }
 
     public gui() {
 
+
+
+        //Already saved data
         databaseConnection.addUser("Dana", 201501455, "password", "Student");
         databaseConnection.addUser("Antonio", 201402582, "password", "Student");
         databaseConnection.addUser("Fares", 20160000, "password", "Student");
         databaseConnection.addUser("Zaraket", 1, "password", "Teacher");
         databaseConnection.addUser("Karameh", 2, "password", "Teacher");
         databaseConnection.addUser("Bazzi", 3, "password", "Teacher");
+
+
 
         //Login State
         loginButton.addActionListener(new ActionListener() {
@@ -140,6 +152,7 @@ public class gui {
         });
 
 
+
         //Admin adds a user
         addUserButton.addActionListener(new ActionListener() {
             @Override
@@ -150,9 +163,8 @@ public class gui {
                 int userID = Integer.parseInt(ADMINaddUserID.getText());
                 String userRole = String.valueOf(ADMINuserRole.getSelectedItem());
 
-                boolean isAdded = databaseConnection.addUser(userName, userID, password, userRole);
 
-                if (isAdded == true)
+                if (databaseConnection.addUser(userName, userID, password, userRole))
                 {
                     ADMINisAdded.setText("User was Added");
                 }
@@ -170,9 +182,8 @@ public class gui {
         TEACHERlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Logging out as null
-                loggedInUser = null;
-                states.setSelectedIndex(0);
+
+               logout();
 
             }
         });
@@ -182,19 +193,19 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Logging out as null
-                loggedInUser = null;
-                states.setSelectedIndex(0);
+               logout();
 
             }
         });
         STUDENTlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Logging out as null
-                loggedInUser = null;
-                states.setSelectedIndex(0);
+
+                logout();
+
             }
         });
+
 
         //Teacher adds a course (either to be set or asked to be voted on).
         submitButton.addActionListener(new ActionListener() {
@@ -255,31 +266,42 @@ public class gui {
 
         //Teacher's Requests
         //Note: Usually new requests are pending
-        //Mahmoud:: Will create a new class "request" :: Done.
         refreshRequestsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Get requests sent from students to the teacher
                 ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
 
-                Vector<String> requestStrings = new Vector<>();
+
+                DefaultListModel model = new DefaultListModel();
+
+
                 for (Request r: requests) {
-                    requestStrings.add( r.getRequestID() + "::["+ r.getState() + "] From: " + r.getStudentID() + ", Course: " + r.getCourseName() +
-                    ", Request Note: " + r.getRequestText());
+
+                    model.addElement(r.toString());
+
                 }
 
-                TEACHERcoursesManager.setListData(requestStrings);
+                TEACHERrequests.setModel(model);
+                TEACHERrequests.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                TEACHERrequests.setVisible(true);
+
+
 
             }
         });
+
+        //Approve a course
         approveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List listOfCourses =  TEACHERcoursesManager.getSelectedValuesList();
-                //Approve the above requests
+
+                List listOfCourses = TEACHERrequests.getSelectedValuesList();
+                //Reject the above requests
                 String req;
+
                 for (Object request:
-                     listOfCourses) {
+                        listOfCourses) {
 
                     req = (String) request;
                     req = req.substring(0, req.indexOf("::"));
@@ -288,14 +310,19 @@ public class gui {
 
 
                 }
+
             }
         });
+
+
         rejectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List listOfCourses = TEACHERcoursesManager.getSelectedValuesList();
+
+                List listOfCourses = TEACHERrequests.getSelectedValuesList();
                 //Reject the above requests
                 String req;
+
                 for (Object request:
                         listOfCourses) {
 
@@ -318,8 +345,7 @@ public class gui {
 
                 ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
 
-                for (Request r:
-                     requests) {
+                for (Request r: requests) {
 
                     if(!courses.contains(r.getCourseName()))
                     {
