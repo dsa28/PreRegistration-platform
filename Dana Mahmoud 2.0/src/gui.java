@@ -89,7 +89,7 @@ public class gui {
     Things we should implement:
     1) Admin can add users -- done
     2) Teachers can add courses -- done
-    3) Login as admin, teacher or student --teacher and student done, still need admin
+    3) Login as admin, teacher or student -- done
 
     4) Search for courses --  done
 
@@ -103,6 +103,7 @@ public class gui {
     11) Check requests -- done
 
     12) Teachers add new course -- done
+    13) Students remove course -- done
      */
 
     //Helper functions to avoid duplicate code
@@ -176,6 +177,8 @@ public class gui {
         databaseConnection.addUser("Zaraket", 1, "password", "Teacher");
         databaseConnection.addUser("Karameh", 2, "password", "Teacher");
         databaseConnection.addUser("Bazzi", 3, "password", "Teacher");
+
+        databaseConnection.addUser("Admin",0,"password", "Admin");
 
         Course Math227 = new Course("Math 227");
         Course Math251 = new Course("Math 251");
@@ -512,10 +515,11 @@ public class gui {
                         listOfCourses) {
 
                     c = (String) course;
-                    c = c.substring(0, c.indexOf(": @"));
+                    c = c.substring(c.indexOf("[")+1, c.indexOf("]"));
 
+                    System.out.println(c);
                     //remove course from student schedule having name c
-
+                    loggedInUser.removecourse(c);
 
                 }
 

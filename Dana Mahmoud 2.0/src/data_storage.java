@@ -63,7 +63,7 @@ public class data_storage {
         }
         else if (role.equals("Admin"))
         {
-            // return new Admin(name,id,password);
+            User =  new Admin(name,id,password);
 
         }
         else
