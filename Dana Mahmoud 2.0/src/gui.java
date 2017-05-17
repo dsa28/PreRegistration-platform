@@ -70,6 +70,11 @@ public class gui {
     private JComboBox TEACHERfromMins;
     private JComboBox TEACHERtillHrs;
     private JComboBox TEACHERtillMins;
+    private JTabbedPane tabbedPane2;
+    private JList ADMINcourses;
+    private JList ADMINrooms;
+    private JButton assignRoomButton;
+    private JButton refreshButton1;
 
 
     private data_storage databaseConnection = new data_storage();
@@ -462,64 +467,64 @@ public class gui {
                 Vector<String> courses = new Vector<>();
                 Vector<Integer> count = new Vector<Integer>();
 
-              /*)  ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
-
-                for (Request r: requests) {
-
-                    if(!courses.contains(r.getCourseName()))
-                    {
-                        courses.add(r.getCourseName());
-                        count.add(1);
-                    }
-                    else
-                    {
-                     count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
-                    }
-
-                }
-
-                Vector <String> coursesStrings = new Vector<>();
-                for (int i = 0; i < courses.size(); i++){
-
-                    coursesStrings.add(courses.get(i) + ": " +count.get(i) + " requests.");
-                }
-
-                requestStatistics.setListData(coursesStrings);
-*/
-            }
-        });
-
-        //Student Schedule
-        refreshScheduleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                schedule(STUDENTschedule);
-
-
-            }
-        });
-
-        removeCoursesButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO: Remove courses from student
-                List listOfCourses =  STUDENTschedule.getSelectedValuesList();
-                //Approve the above requests
-                String c;
-                for (Object course:
-                        listOfCourses) {
-
-                    c = (String) course;
-                    c = c.substring(0, c.indexOf(":"));
-
-                    //remove course from student schedule having name c
-                    loggedInUser.removecourse(c);
-
-
-                }
-
+//                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+//
+//                for (Request r: requests) {
+//
+//                    if(!courses.contains(r.getCourseName()))
+//                    {
+//                        courses.add(r.getCourseName());
+//                        count.add(1);
+//                    }
+//                    else
+//                    {
+//                     count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
+//                    }
+//
+//                }
+//
+//                Vector <String> coursesStrings = new Vector<>();
+//                for (int i = 0; i < courses.size(); i++){
+//
+//                    coursesStrings.add(courses.get(i) + ": " +count.get(i) + " requests.");
+//                }
+//
+//                requestStatistics.setListData(coursesStrings);
+//
+//            }
+//        });
+//
+//        //Student Schedule
+//        refreshScheduleButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                schedule(STUDENTschedule);
+//
+//
+//            }
+//        });
+//
+//        removeCoursesButton.addActionListener(new ActionListener()
+//        {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //TODO: Remove courses from student
+//                List listOfCourses =  STUDENTschedule.getSelectedValuesList();
+//                //Approve the above requests
+//                String c;
+//                for (Object course:
+//                        listOfCourses) {
+//
+//                    c = (String) course;
+//                    c = c.substring(0, c.indexOf(":"));
+//
+//                    //remove course from student schedule having name c
+//                    loggedInUser.removecourse(c);
+//
+//
+//                }
+//
             }
         });
 
@@ -601,6 +606,25 @@ public class gui {
             }
         });
 
+
+        //Admin Backend Manage Rooms
+        refreshButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ArrayList<Course> courses = databaseConnection.getAllCourses();
+                Vector<String> coursesStrings = new Vector<>();
+
+                //TODO: Get courses and available rooms and insert them to JList
+//                for (Course c:
+//                        courses) {
+//                    c.getName();
+//
+//
+//                }
+
+            }
+        });
     }
 
     public static void main(String[] args) {
