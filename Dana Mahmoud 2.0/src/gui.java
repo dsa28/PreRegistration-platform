@@ -249,6 +249,7 @@ public class gui {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String courseName = TEACHERaddCourseName.getText();
                 int capacity = Integer.parseInt(TEACHERaddCourseCapacity.getText());
                 int timeFromHour = Integer.parseInt(String.valueOf(TEACHERfromHrs.getSelectedItem()));
@@ -266,9 +267,31 @@ public class gui {
 
                 boolean needsVoting = TEACHERaddCourseIsVoted.isSelected();
 
-                //TODO: Add to courses list.
+                Course course = new Course(courseName);
+                course.increaseCapacity(capacity);
+
+                course.setTeacher((Teacher)loggedInUser);
+                //Because teacher tab is only accessible to teachers, loggedInUser is necessarily a teacher
 
 
+                ScheduleElement time;
+
+                int i =0;
+                for (Day d: Day.values())
+                {
+                    if (days.get(i)) //course offered this day
+                    {
+                        time = new ScheduleElement(); //store timing in a schedule element
+                        time.setStartTime(timeFromHour,timeFromMinutes);
+                        time.setEndTime(timeTillHour, timeTillMinutes);
+                        time.setDay(d);
+
+                        course.addTiming(time); //add timing
+                    }
+                }
+
+
+                course.print();
 
             }
         });
@@ -294,6 +317,8 @@ public class gui {
 
             }
         });
+
+
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -311,7 +336,6 @@ public class gui {
 
 
                 DefaultListModel model = new DefaultListModel();
-
 
                 requestClient.start();
                 Request r = requestClient.getNextRequest(loggedInUser);;
@@ -334,6 +358,7 @@ public class gui {
             }
         });
 
+
         //Approve a course
         approveButton.addActionListener(new ActionListener() {
             @Override
@@ -344,6 +369,7 @@ public class gui {
         });
 
 
+        //Reject a course
         rejectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -351,6 +377,9 @@ public class gui {
                 approveCourse(false);
             }
         });
+
+
+
 
         //Request Statistics
         refreshStatisticsButton.addActionListener(new ActionListener() {

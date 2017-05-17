@@ -117,7 +117,7 @@ public class Course  {
 	public boolean increaseCapacity(int extra) 
 	{
 		//Increase capacity by the specified amount
-		if (capacity + extra < room.getMaxCapacity())
+		if (capacity + extra <= room.getMaxCapacity())
 		{
 			capacity += extra;
 			return true;
@@ -134,6 +134,7 @@ public class Course  {
 	public void setTeacher(Teacher teacher)
 	{
 		this.teacher = teacher;
+		//TODO: add course to teacher's schedule...
 	}
 	
 	public Teacher getTeacher()

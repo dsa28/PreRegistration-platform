@@ -137,7 +137,7 @@ public class Room {
 	private Room ()
 	{
 		name= "TBA";
-		maxCapacity = 100;
+		maxCapacity = Integer.MAX_VALUE; //unlimited capacity if room is not specified
 	}
 	
 	
