@@ -123,8 +123,8 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		setDuration(duration.getHours(),duration.getMinutes());
 		return true;
 	}
-	
-	//TODO add conditions to make sure end time happens after start time
+
+
 	public boolean setEndTime(String s)
 	{
 		
@@ -168,6 +168,7 @@ public class ScheduleElement implements Comparable<ScheduleElement>{
 		if (name != null && name != "") //theres a name
 		{
 			s = "["+  name + "] ";
+
 		}
 		return s + getTimeString();
 
