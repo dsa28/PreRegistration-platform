@@ -253,7 +253,7 @@ public class gui {
         Room.getRoom("Fisk 321");
         Room.getRoom("Bechtel 110");
         Room.getRoom("Nicely 220");
-        
+
 
 
         //Login State
@@ -717,6 +717,35 @@ public class gui {
 
 
             }
+        });
+
+        //Assign a room to a course
+        assignRoomButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Object courses =  ADMINcourses.getSelectedValue();
+                Object rooms = ADMINrooms.getSelectedValue();
+
+                Course course;
+                //Approve the above requests
+
+                String s;
+
+                s = (String) courses; //only one course can be selected
+                s = s.substring(0, s.indexOf(": @"));
+
+
+                databaseConnection.start();
+               course = databaseConnection.retrieveCourse(s);
+
+               s = (String) rooms;
+               course.setRoom(s);
+
+               course.print();
+
+
+                }
         });
     }
 

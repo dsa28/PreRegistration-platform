@@ -48,6 +48,12 @@ public class Course  {
 		return (name.equals(s));
 	}
 
+	public boolean setRoom (String s)
+	{
+		Room room = Room.getRoom(s); //get room called s
+		return setRoom(room);
+	}
+
 	public boolean setRoom(Room room)
 	{
 		boolean bool = room.addElement(timings);
@@ -158,9 +164,7 @@ public class Course  {
 
 	public String toString()
 	{
-
-
-		return name + ": @" + timings.toString() + " [" + teacher + "]";
+		return name + ": @" + timings.toString() + " [" + teacher + "]" + "[" + room.getName() + "]";
 	}
 	
 	Course(String name)
