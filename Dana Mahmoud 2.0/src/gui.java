@@ -206,10 +206,10 @@ public class gui {
 
         databaseConnection.addUser("Admin",0,"password", "Admin");
 
-        Course Math227 = new Course("Math 227");
-        Course Math251 = new Course("Math 251");
-        Course Math210 = new Course("Math 210");
-        Course EECE437 = new Course("EECE 437");
+        Course Math227 = new Course("Math 227",20);
+        Course Math251 = new Course("Math 251",40);
+        Course Math210 = new Course("Math 210",20);
+        Course EECE437 = new Course("EECE 437",15);
 
         ScheduleElement time1 = new ScheduleElement();
         ScheduleElement time2;

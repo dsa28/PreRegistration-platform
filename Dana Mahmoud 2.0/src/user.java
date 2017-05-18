@@ -43,16 +43,22 @@ public class user {
 
 
     //both students and teachers need to be able to remove courses
-    public void removecourse(String c)
+    public Course removecourse(String c)
     {
+        Course course = null;
+
         for(int i=0;i<courses.size();i++)
         {
             if (courses.get(i).equals(c)) {
+                course = courses.get(i);
                 courses.remove(i);
+
             }
         }
 
         schedule.remove(c); //need to also remove course from schedule
+
+        return course;
     }
 
 

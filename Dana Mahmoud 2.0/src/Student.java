@@ -21,4 +21,35 @@ public class Student extends user {
     }
 
 
+    public boolean addcourse(Course c)
+    {
+        if (super.addcourse(c))
+        {
+           if( c.addStudent(this)) //need to register the student to the course
+           {
+               c.print();
+               return true;
+           }
+
+           removecourse(c.getName()); //not enough capacity in the course! need to remove it
+
+        }
+        return false;
+    }
+
+    public Course removecourse(String s)
+    {
+        Course c = super.removecourse(s);
+
+        if(c!= null)
+        {
+            c.removeStudent(this);
+        }
+
+        return c;
+
+    }
+
+
+
 }

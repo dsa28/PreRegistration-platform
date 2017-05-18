@@ -56,6 +56,11 @@ public class Course  {
 
 	public boolean setRoom(Room room)
 	{
+		if (getRegistered()>room.getMaxCapacity())
+		{
+			return false; //more registered students than places in the room!!
+		}
+
 		boolean bool = room.addElement(timings);
 		
 		
@@ -66,6 +71,12 @@ public class Course  {
 			this.room = room;
 			room.addCourse(this);
 			//need to empty old room, if any
+
+			if (capacity>room.getMaxCapacity())
+			{
+				capacity = room.getMaxCapacity();
+				//max number of students who can register should be at most as much as the room's capacity
+			}
 		}
 		
 		return bool;
@@ -119,7 +130,19 @@ public class Course  {
 		}
 		return false; //not enough places :( 
 	}
-	
+
+	public void removeStudent(Student s)
+	{
+		for(int i=0;i<students.size();i++)
+		{
+			if (students.get(i).equals(s)) {
+				students.remove(i);
+				return; //student can register course only once
+			}
+		}
+
+	}
+
 	public boolean increaseCapacity(int extra) 
 	{
 		//Increase capacity by the specified amount
@@ -164,7 +187,7 @@ public class Course  {
 
 	public String toString()
 	{
-		return name + ": @" + timings.toString() + " [" + teacher + "]" + "[" + room.getName() + "]";
+		return name + ": @" + timings.toString() + " [" + teacher + "]" + "[" + room.getName() + "]" + "[" +  getRegistered() + "]";
 	}
 	
 	Course(String name)
@@ -172,11 +195,11 @@ public class Course  {
 		this.name = name;
 		students = new ArrayList<Student>();
 		teacher = new Teacher();
-		
-		capacity = 0;
+
 		
 		timings = new Schedule();
-		room = Room.getRoom(); //Room is TBA 
+		room = Room.getRoom(); //Room is TBA
+		capacity = room.getMaxCapacity();
 		
 	}
 	
