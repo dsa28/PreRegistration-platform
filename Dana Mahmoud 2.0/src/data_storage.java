@@ -47,6 +47,18 @@ public class data_storage {
         courses.add(course);
     }
 
+    public void removeCourse(String s)
+    {
+        for (int i=0; i< courses.size(); i++)
+        {
+            if (courses.get(i).equals(s))
+            {
+                courses.remove(i);
+                i--; //still same index because we removed something
+            }
+
+        }
+    }
 
     public boolean addUser(String name, int id, String password, String role)
     {

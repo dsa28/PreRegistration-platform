@@ -269,7 +269,7 @@
                           </grid>
                         </constraints>
                         <properties>
-                          <text value="Enter Course Name"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>

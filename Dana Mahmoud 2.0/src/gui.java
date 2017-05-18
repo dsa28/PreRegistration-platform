@@ -431,7 +431,20 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List listOfCourses = TEACHERcoursesManager.getSelectedValuesList();
-                //TODO: Delete the course from the Teacher's courses using the above list
+
+
+                String c;
+                for (Object course :
+                        listOfCourses) {
+
+                    c = (String) course;
+                    c = c.substring(c.indexOf("[") + 1, c.indexOf("]"));
+
+                    System.out.println(c);
+                    //remove course from student schedule having name c
+                    loggedInUser.removecourse(c);
+                    databaseConnection.removeCourse(c);
+                }
             }
         });
 
@@ -599,7 +612,7 @@ public class gui {
             }
         });
 
-                removeCoursesButton.addActionListener(new ActionListener() {
+        removeCoursesButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
