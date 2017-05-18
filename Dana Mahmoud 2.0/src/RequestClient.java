@@ -47,19 +47,20 @@ public class RequestClient {
     }
 
 
-    public ArrayList<Request> getRequestsForTeacher (int id)
-    {
-        ArrayList<Request> studentRequests = new ArrayList<>();
-        for (Request r: requests
-                ) {
-            if(r.getTeacherID() == id)
-            {
-                studentRequests.add(r);
-            }
-        }
-
-        return studentRequests;
-    };
+    //Deprecated
+//    public ArrayList<Request> getRequestsForTeacher (int id)
+//    {
+//        ArrayList<Request> studentRequests = new ArrayList<>();
+//        for (Request r: requests
+//                ) {
+//            if(r.getTeacherID() == id)
+//            {
+//                studentRequests.add(r);
+//            }
+//        }
+//
+//        return studentRequests;
+//    };
 
     public ArrayList<Request> viewSentRequests (int id)
     {
