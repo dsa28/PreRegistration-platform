@@ -332,9 +332,10 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ((DefaultListModel)TEACHERcoursesManager.getModel()).clear();
-                ((DefaultListModel)TEACHERrequests.getModel()).clear();
-                ((DefaultListModel)requestStatistics.getModel()).clear();
+                Object[] clear = {};
+                TEACHERcoursesManager.setListData(clear);
+                TEACHERrequests.setListData(clear);
+                requestStatistics.setListData(clear);
                 logout();
 
             }
@@ -354,9 +355,10 @@ public class gui {
             public void actionPerformed(ActionEvent e) {
 
 
+                Object[] clear = {};
 
-                ((DefaultListModel)STUDENTschedule.getModel()).clear();
-                ((DefaultListModel)searchResults.getModel()).clear();
+                STUDENTschedule.setListData(clear);
+                searchResults.setListData(clear);
 
                 logout();
 
