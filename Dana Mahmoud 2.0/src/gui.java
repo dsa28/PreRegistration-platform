@@ -353,6 +353,11 @@ public class gui {
         ADMINlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Object[] clear = {};
+
+                ADMINrooms.setListData(clear);
+                ADMINcourses.setListData(clear);
+
                 //Logging out as null
                logout();
 
