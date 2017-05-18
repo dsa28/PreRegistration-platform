@@ -3,6 +3,7 @@ import javax.swing.event.ListDataListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -76,6 +77,8 @@ public class gui {
     private JButton assignRoomButton;
     private JButton refreshButton1;
     private JButton refreshButton2;
+    private JButton refreshRequestsButton1;
+    private JList sentRequests;
 
 
     private data_storage databaseConnection = new data_storage();
@@ -359,6 +362,7 @@ public class gui {
 
                 STUDENTschedule.setListData(clear);
                 searchResults.setListData(clear);
+                sentRequests.setListData(clear);
 
                 logout();
 
@@ -806,6 +810,37 @@ public class gui {
 
                 STUDENTmessageContent.setText("");
                 receiverIDTextField.setText("");
+            }
+        });
+
+        //Student Requests
+        refreshRequestsButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //Get requests sent from students to the teacher
+
+                ArrayList<Request> requests = requestClient.viewSentRequests(loggedInUser.getId());
+                Vector<String> reqStrings = new Vector<>();
+
+                for (Request r :
+                   requests  ) {
+
+                    if (r.getStudentID() == loggedInUser.getId()) {
+                        reqStrings.add(r.getRequestID() + "::[" + r.getState() + "] To: " + r.getTeacherID() + ", Course: " + r.getCourseName() +
+                                ", Request Note: " + r.getRequestText());
+                    }
+
+                }
+
+                sentRequests.setListData(reqStrings);
+
+
+
+
+
+
+
             }
         });
     }

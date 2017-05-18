@@ -12,7 +12,6 @@ public class Course  {
 	 * -setTime
 	 * -increaseCapacity
 	 * -addStudent
-	 * -removeStudent
 	 * -getReigstered
 	 * -getScheduleElement
 	 * -addTiming

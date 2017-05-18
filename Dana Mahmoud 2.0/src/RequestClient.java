@@ -61,6 +61,20 @@ public class RequestClient {
         return studentRequests;
     };
 
+    public ArrayList<Request> viewSentRequests (int id)
+    {
+        ArrayList<Request> studentRequests = new ArrayList<>();
+        for (Request r: requests
+                ) {
+            if(r.getStudentID() == id)
+            {
+                studentRequests.add(r);
+            }
+        }
+
+        return studentRequests;
+    };
+
     public void approveCourse(int requestID)
     {
 
