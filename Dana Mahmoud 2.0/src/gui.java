@@ -168,6 +168,27 @@ public class gui {
     }
 
 
+    //helper function to get all courses with the name "search"
+    //or all courses if search is left blank
+    DefaultListModel getCourse(String search)
+    {
+
+        DefaultListModel model = new DefaultListModel();
+
+        databaseConnection.start();
+        Course c = databaseConnection.retrieveCourse(search);
+
+
+        while(c!= null) {
+
+            model.addElement(c.toString());
+            c = databaseConnection.retrieveCourse(search);
+
+        }
+
+        return model;
+
+    }
 
 
 
@@ -225,6 +246,14 @@ public class gui {
         databaseConnection.addCourse(Math251);
         databaseConnection.addCourse(Math210);
         databaseConnection.addCourse(EECE437);
+
+        Room.getRoom("Nicely 224");
+        Room.getRoom("Bechtel 111");
+        Room.getRoom("WHCR");
+        Room.getRoom("Fisk 321");
+        Room.getRoom("Bechtel 110");
+        Room.getRoom("Nicely 220");
+        
 
 
         //Login State
@@ -573,9 +602,10 @@ public class gui {
                 removeCoursesButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //TODO: Remove courses from student
+
+
                         List listOfCourses = STUDENTschedule.getSelectedValuesList();
-                        //Approve the above requests
+
                         String c;
                         for (Object course :
                                 listOfCourses) {
@@ -603,18 +633,7 @@ public class gui {
                 String search = enterCourseNameTextField.getText();
 
 
-                DefaultListModel model = new DefaultListModel();
-
-                databaseConnection.start();
-                Course c = databaseConnection.retrieveCourse(search);
-
-
-                while(c!= null) {
-
-                    model.addElement(c.toString());
-                    c = databaseConnection.retrieveCourse(search);
-
-                }
+                DefaultListModel model = getCourse(search);
 
 
                 searchResults.setModel(model);
@@ -623,11 +642,10 @@ public class gui {
 
 
 
-
             }
         });
 
-        //TODO:Add course to student schedule
+
         addCourseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -679,16 +697,24 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //ArrayList<Course> courses = databaseConnection.getAllCourses();
-                //Vector<String> coursesStrings = new Vector<>();
+                DefaultListModel model = getCourse("");  //get all courses
 
-                //TODO: Get courses and available rooms and insert them to JList
-//                for (Course c:
-//                        courses) {
-//                    c.getName();
-//
-//
-//                }
+                ADMINcourses.setModel(model);
+                ADMINcourses.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                ADMINcourses.setVisible(true);
+
+                DefaultListModel rooms = new DefaultListModel();
+
+                for (Room r: Room.rooms.values()) //get all rooms
+                {
+                    rooms.addElement(r.getName());
+                }
+
+
+                ADMINrooms.setModel(rooms);
+                ADMINrooms.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                ADMINrooms.setVisible(true);
+
 
             }
         });
