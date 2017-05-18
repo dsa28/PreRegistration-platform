@@ -281,6 +281,8 @@ public class gui {
                     loginError.setText("");
                     System.out.println("Logged In as " + userIDinput.getText());
                     System.out.println(password);
+                    userIDinput.setText("");
+                    passwordInput.setText("");
 
                 }
                 else
@@ -308,11 +310,17 @@ public class gui {
                 if (databaseConnection.addUser(userName, userID, password, userRole))
                 {
                     ADMINisAdded.setText("User was Added");
+                    ADMINaddUserName.setText("");
+                    ADMINaddUserPassword.setText("");
+                    ADMINaddUserID.setText("");
+                    ADMINuserRole.setSelectedIndex(0);
                 }
                 else
                 {
                     ADMINisAdded.setText("User already exists");
                 }
+
+
 
             }
         });
@@ -323,8 +331,11 @@ public class gui {
         TEACHERlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-               logout();
+                
+                ((DefaultListModel)TEACHERcoursesManager.getModel()).clear();
+                ((DefaultListModel)TEACHERrequests.getModel()).clear();
+                ((DefaultListModel)requestStatistics.getModel()).clear();
+                logout();
 
             }
         });
@@ -342,7 +353,13 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                
+                ((DefaultListModel)STUDENTschedule.getModel()).clear();
+                ((DefaultListModel)searchResults.getModel()).clear();
+
                 logout();
+
 
             }
         });
@@ -400,6 +417,21 @@ public class gui {
                     databaseConnection.addCourse(course); //only add a course if the teacher's schedule allows it
                 }
 
+                TEACHERaddCourseName.setText("");
+                TEACHERaddCourseCapacity.setText("");
+                TEACHERfromHrs.setSelectedIndex(0);
+                TEACHERfromMins.setSelectedIndex(0);
+                TEACHERtillHrs.setSelectedIndex(0);
+                TEACHERtillMins.setSelectedIndex(0);
+
+                mondayCheckBox.setSelected(false);
+                tuesdayCheckBox.setSelected(false);
+                wednesdayCheckBox.setSelected(false);
+                thursdayCheckBox.setSelected(false);
+                fridayCheckBox.setSelected(false);
+                saturdayCheckBox.setSelected(false);
+
+                TEACHERaddCourseIsVoted.setSelected(false);
 
 
             }
@@ -702,6 +734,9 @@ public class gui {
 
                 requestClient.sendRequest(teacherID, studentID, courseName, note);
 
+                requestTeacherID.setText("");
+                requestCourseName.setText("");
+                requestNote.setText("");
 
             }
         });
@@ -790,6 +825,9 @@ public class gui {
                 int receiver = Integer.parseInt(receiverIDTextField.getText());
 
                 messageClient.sendMessage(loggedInUser.getId(), receiver, content);
+
+                STUDENTmessageContent.setText("");
+                receiverIDTextField.setText("");
             }
         });
     }
