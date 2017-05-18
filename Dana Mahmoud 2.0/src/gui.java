@@ -562,12 +562,15 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vector<String> courses = new Vector<>();
-                Vector<Integer> count = new Vector<Integer>();
+                Vector<Integer> count = new Vector<>();
+
+                requestClient.start();
+                Request r = requestClient.getNextRequest(loggedInUser);
 
 
-                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+                while(r!= null) {
 
-                for (Request r: requests) {
+                    r = requestClient.getNextRequest(loggedInUser);
 
                     if(!courses.contains(r.getCourseName()))
                     {
@@ -576,10 +579,12 @@ public class gui {
                     }
                     else
                     {
-                     count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
+                        count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
                     }
 
+
                 }
+
 
                 Vector <String> coursesStrings = new Vector<>();
                 for (int i = 0; i < courses.size(); i++){
@@ -833,6 +838,8 @@ public class gui {
 
                 ArrayList<Request> requests = requestClient.viewSentRequests(loggedInUser.getId());
                 Vector<String> reqStrings = new Vector<>();
+
+
 
                 for (Request r :
                    requests  ) {
