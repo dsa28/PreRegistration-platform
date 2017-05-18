@@ -208,9 +208,9 @@ public class gui {
 
         databaseConnection.addUser("Admin",0,"password", "Admin");
 
-        Course Math227 = new Course("Math 227",20);
-        Course Math251 = new Course("Math 251",40);
-        Course Math210 = new Course("Math 210",20);
+        Course Math227 = new Course("MATH 227",20);
+        Course Math251 = new Course("MATh 251",40);
+        Course Math210 = new Course("MATH 210",20);
         Course EECE437 = new Course("EECE 437",15);
 
         ScheduleElement time1 = new ScheduleElement();
@@ -331,7 +331,7 @@ public class gui {
         TEACHERlogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 ((DefaultListModel)TEACHERcoursesManager.getModel()).clear();
                 ((DefaultListModel)TEACHERrequests.getModel()).clear();
                 ((DefaultListModel)requestStatistics.getModel()).clear();
@@ -354,7 +354,7 @@ public class gui {
             public void actionPerformed(ActionEvent e) {
 
 
-                
+
                 ((DefaultListModel)STUDENTschedule.getModel()).clear();
                 ((DefaultListModel)searchResults.getModel()).clear();
 
