@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="697fda7c-7f36-44fb-b6cc-345f2d186a63" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java" afterPath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.form" afterPath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java" afterPath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Dana Mahmoud 2.0/todos/MessageClient.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java" afterPath="$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,19 +17,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Teacher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/Teacher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-              <folding>
-                <element signature="e#267#268#0" expanded="true" />
-                <element signature="e#306#307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/Admin.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -48,21 +35,21 @@
       <file leaf-file-name="gui.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="441" column="0" lean-forward="false" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
+            <state relative-caret-position="3958">
+              <caret line="779" column="36" lean-forward="true" selection-start-line="779" selection-start-column="36" selection-end-line="779" selection-end-column="36" />
               <folding>
-                <element signature="e#10859#10868#0" expanded="true" />
-                <element signature="e#15449#15458#0" expanded="true" />
+                <element signature="e#11617#11626#0" expanded="true" />
+                <element signature="e#16898#16907#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Course.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Course.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state relative-caret-position="137">
+              <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -127,15 +114,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_storage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_storage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="-722">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#541#542#0" expanded="true" />
-                <marker date="1495091815355" expanded="true" signature="979:986" ph="{...}" />
+                <element signature="e#411#412#0" expanded="true" />
+                <element signature="e#448#449#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,10 +161,10 @@
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/ScheduleElement.java" />
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/user.java" />
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/Student.java" />
-        <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java" />
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.form" />
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java" />
         <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java" />
+        <option value="$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java" />
       </list>
     </option>
   </component>
@@ -225,6 +213,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Dana Mahmoud 2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreRegistration-platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PreRegistration-platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dana Mahmoud 2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="todos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -560,13 +566,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.3810589" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.37882176" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.56226695" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.5652498" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.43773302" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871974" sideWeight="0.4347502" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.49739" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -654,9 +660,10 @@
         <state relative-caret-position="221">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <marker date="1495091815355" expanded="true" signature="979:986" ph="{...}" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -674,8 +681,8 @@
         <state relative-caret-position="1309">
           <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
-            <element signature="e#10859#10868#0" expanded="true" />
-            <element signature="e#15449#15458#0" expanded="true" />
+            <element signature="e#11617#11626#0" expanded="true" />
+            <element signature="e#16898#16907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,14 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/todos/MessageClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -821,12 +820,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          <folding>
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#584#585#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -991,14 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1010,26 +996,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java">
+    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="441" column="0" lean-forward="false" selection-start-line="441" selection-start-column="0" selection-end-line="441" selection-end-column="0" />
+        <state relative-caret-position="-722">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="e#10859#10868#0" expanded="true" />
-            <element signature="e#15449#15458#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/data_storage.java">
+    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/todos/MessageClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="85">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/gui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3958">
+          <caret line="779" column="36" lean-forward="true" selection-start-line="779" selection-start-column="36" selection-end-line="779" selection-end-column="36" />
           <folding>
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#541#542#0" expanded="true" />
-            <marker date="1495091815355" expanded="true" signature="979:986" ph="{...}" />
+            <element signature="e#11617#11626#0" expanded="true" />
+            <element signature="e#16898#16907#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dana Mahmoud 2.0/src/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
