@@ -138,6 +138,11 @@ public class gui {
             if (param)
             {
                 requestClient.approveCourse(Integer.parseInt(req));
+                String courseName = requestClient.getNextRequest(Integer.parseInt(req)).getCourseName();
+                Course c = databaseConnection.retrieveCourse(courseName);
+                loggedInUser.addcourse(c);
+
+
             }
             else
             {
@@ -527,6 +532,7 @@ public class gui {
             public void actionPerformed(ActionEvent e) {
 
                 approveCourse(true);
+
             }
         });
 
