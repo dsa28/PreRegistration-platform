@@ -15,6 +15,8 @@ public class RequestClient {
         requests.add(r);
     }
 
+
+
     public void start()
     {
         fence = 0;
@@ -45,6 +47,20 @@ public class RequestClient {
     }
 
 
+    public ArrayList<Request> getRequestsForTeacher (int id)
+    {
+        ArrayList<Request> studentRequests = new ArrayList<>();
+        for (Request r: requests
+                ) {
+            if(r.getTeacherID() == id)
+            {
+                studentRequests.add(r);
+            }
+        }
+
+        return studentRequests;
+    };
+
     public void approveCourse(int requestID)
     {
 
@@ -71,7 +87,7 @@ public class RequestClient {
     }
 
 
-     RequestClient()
+    RequestClient()
     {
         requests = new ArrayList<Request>();
         fence = 0;
