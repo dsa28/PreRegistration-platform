@@ -1,8 +1,5 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +15,7 @@ public class data_storage {
     private HashMap<Student,Student> students;
 
     private HashMap<user,user> users;
+
 
 
     private int fence; //itterator for courses
@@ -125,6 +123,12 @@ public class data_storage {
         return tempuser;
     }
 
+    public String getUserName(int userid)
+    {
+        user temp = users.get( new user(userid));
+        return temp.getName();
+    }
+
     public data_storage()
     {
         courses = new ArrayList<Course>();
@@ -135,6 +139,8 @@ public class data_storage {
         fence = 0;
 
     }
+
+
 
 
 
@@ -160,25 +166,25 @@ public class data_storage {
             return "Error";
         }
     }
-    public void StoreMessage(String messa, int userid, String datetimee) {//date time should be of the following format
-        //yyyy-mm-dd hh:mm:ss.xxxxx
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
-            //Open a connection using JDBC driver name and database URL
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prereg","root","root");
-            Statement stmt = con.createStatement();
-            //store a message
-            stmt.executeUpdate("insert into 'messages' (UserID, MessageTimestamp, MessageBody) VALUE ( '"+ userid + "','" + datetimee  + "','" + messa + "')");
-            System.out.println("DONE");
-            con.close();
-        }
-        catch(Exception e)
-        {
-            //Handle errors for Class.forName
-            e.printStackTrace();
-        }
-    }
+//    public void StoreMessage(String messa, int userid, String datetimee) {//date time should be of the following format
+//        //yyyy-mm-dd hh:mm:ss.xxxxx
+//
+//        try{
+//            Class.forName("com.mysql.jdbc.Driver");//Register JDBC driver
+//            //Open a connection using JDBC driver name and database URL
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/prereg","root","root");
+//            Statement stmt = con.createStatement();
+//            //store a message
+//            stmt.executeUpdate("insert into 'messages' (UserID, MessageTimestamp, MessageBody) VALUE ( '"+ userid + "','" + datetimee  + "','" + messa + "')");
+//            System.out.println("DONE");
+//            con.close();
+//        }
+//        catch(Exception e)
+//        {
+//            //Handle errors for Class.forName
+//            e.printStackTrace();
+//        }
+//    }
 
 
 

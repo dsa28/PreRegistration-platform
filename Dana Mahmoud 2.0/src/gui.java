@@ -22,9 +22,9 @@ public class gui {
     private JButton searchCourseButton;
 
     private JButton STUDENTlogoutButton;
-    private JList list3;
-    private JTextField receiverUsernameTextField;
-    private JTextPane textPane1;
+    private JList STUDENTinbox;
+    private JTextField receiverIDTextField;
+    private JTextPane STUDENTmessageContent;
     private JButton sendMessageButton;
     private JList searchResults;
     private JButton addCourseButton;
@@ -75,10 +75,12 @@ public class gui {
     private JList ADMINrooms;
     private JButton assignRoomButton;
     private JButton refreshButton1;
+    private JButton refreshButton2;
 
 
     private data_storage databaseConnection = new data_storage();
     private RequestClient requestClient = new RequestClient();
+    private MessageClient messageClient = new MessageClient();
 
 
 
@@ -759,6 +761,36 @@ public class gui {
 
 
                 }
+        });
+        refreshButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vector<Message> inbox = messageClient.getInbox(loggedInUser.getId());
+                Vector<String> inboxString = new Vector<>();
+
+                int senderID;
+                String senderName;
+
+                for (Message m :
+                        inbox) {
+
+                    senderID = m.getSenderID();
+                    senderName = databaseConnection.getUserName(senderID);
+                    inboxString.add(senderName + " [" + m.getSenderID() + "]: " + m.getContent());
+                }
+
+
+                STUDENTinbox.setListData(inboxString);
+            }
+        });
+        sendMessageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String content = STUDENTmessageContent.getText();
+                int receiver = Integer.parseInt(receiverIDTextField.getText());
+
+                messageClient.sendMessage(loggedInUser.getId(), receiver, content);
+            }
         });
     }
 

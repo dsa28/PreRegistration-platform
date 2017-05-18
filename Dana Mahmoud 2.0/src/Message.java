@@ -9,7 +9,7 @@ public class Message {
     private String content;
     private int senderID;
     private int receiverID;
-    private Boolean readStatus = false;
+   // private Boolean readStatus = false;
 
     protected Message( int senderID, int receiverID, String content)
     {
@@ -34,10 +34,10 @@ public class Message {
         return content;
     }
 
-    void setReadStatus()
-    {
-        readStatus = true;
-    }
+//    void setReadStatus()
+//    {
+//        readStatus = true;
+//    }
 
 
 }
