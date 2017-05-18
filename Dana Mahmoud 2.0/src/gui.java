@@ -494,6 +494,7 @@ public class gui {
 
                 DefaultListModel model = new DefaultListModel();
 
+
                 requestClient.start();
                 Request r = requestClient.getNextRequest(loggedInUser);;
 
@@ -549,7 +550,7 @@ public class gui {
                 Vector<Integer> count = new Vector<Integer>();
 
 
-              /*)  ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
+                ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
 
                 for (Request r: requests) {
 
@@ -572,7 +573,7 @@ public class gui {
                 }
 
                 requestStatistics.setListData(coursesStrings);
-*/
+
             }
         });
 
@@ -607,31 +608,6 @@ public class gui {
                     loggedInUser.removecourse(c);
 
                 }
-
-
-            /*    ArrayList<Request> requests = requestClient.getRequestsForTeacher(loggedInUser.getId());
-
-                for (Request r: requests) {
-
-                    if(!courses.contains(r.getCourseName()))
-                    {
-                        courses.add(r.getCourseName());
-                        count.add(1);
-                    }
-                    else
-                    {
-                     count.set(courses.indexOf(r.getCourseName()), count.get(courses.indexOf(r.getCourseName())) + 1);
-                    }
-
-                }
-
-                Vector <String> coursesStrings = new Vector<>();
-                for (int i = 0; i < courses.size(); i++){
-
-                    coursesStrings.add(courses.get(i) + ": " +count.get(i) + " requests.");
-                }
-
-                requestStatistics.setListData(coursesStrings);*/
 
             }
         });
