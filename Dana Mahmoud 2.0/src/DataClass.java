@@ -14,13 +14,40 @@ public class DataClass {
         //Already saved data
 
         //Students
+
         databaseConnection.addUser("Dana", 201501455, "password", "Student");
         databaseConnection.addUser("Antonio", 201402582, "password", "Student");
-        databaseConnection.addUser("Fares", 201600000, "password", "Student");
-        databaseConnection.addUser("Rabih", 201400000, "password", "Student");
-        databaseConnection.addUser("Jon Snow", 201201111, "password", "Student");
-        databaseConnection.addUser("Daenerys", 201200000, "dragon", "Student");
-        databaseConnection.addUser("Barry Allen", 201301455, "flash", "Student");
+        databaseConnection.addUser("Mahmoud", 201502345, "password", "Student");
+
+        databaseConnection.addUser("Fares", 1000, "password", "Student");
+        databaseConnection.addUser("Rabih", 1001, "password", "Student");
+        databaseConnection.addUser("Jon", 1003, "password", "Student");
+        databaseConnection.addUser("Daenerys", 1004, "dragon", "Student");
+        databaseConnection.addUser("Barry", 1005, "password", "Student");
+        databaseConnection.addUser("Selena", 1006, "password", "Student");
+        databaseConnection.addUser("Oliver", 1007, "password", "Student");
+        databaseConnection.addUser("Clay", 1008, "hannah", "Student");
+
+        databaseConnection.addUser("Hannah", 1013, "password", "Student");
+        databaseConnection.addUser("Toufic", 1009, "password", "Student");
+        databaseConnection.addUser("AbedelRahman", 1010, "password", "Student");
+        databaseConnection.addUser("Abbas", 1011, "password", "Student");
+        databaseConnection.addUser("Stephen", 1020, "password", "Student");
+        databaseConnection.addUser("Kevin", 1012, "password", "Student");
+        databaseConnection.addUser("Aicha", 1014, "password", "Student");
+
+        databaseConnection.addUser("Sawsan", 1015, "password", "Student");
+        databaseConnection.addUser("Bahia", 1016, "password", "Student");
+        databaseConnection.addUser("Nadeen", 1017, "password", "Student");
+        databaseConnection.addUser("Harry", 1018, "magic", "Student");
+        databaseConnection.addUser("Ron", 1002, "password", "Student");
+        databaseConnection.addUser("Jad", 1019, "password", "Student");
+
+        databaseConnection.addUser("A", 1021, "password", "Student");
+        databaseConnection.addUser("Tyrion", 1022, "password", "Student");
+        databaseConnection.addUser("Mohammad", 1023, "password", "Student" );
+
+
 
         //Teachers
         databaseConnection.addUser("Fadi Zaraket", 10, "password", "Teacher");
@@ -45,7 +72,7 @@ public class DataClass {
 
         databaseConnection.addUser("Amin John Kurani", 26, "password", "Teacher");
         databaseConnection.addUser("Christopher Nassar", 27, "password", "Teacher");
-        databaseConnection.addUser("", 28, "password", "Teacher");
+        databaseConnection.addUser("Sophie Moufawad", 28, "password", "Teacher");
         databaseConnection.addUser("Ibrahim Abu Faycal", 29, "password", "Teacher");
 
 
@@ -54,10 +81,22 @@ public class DataClass {
 
 
         //Courses
-        Course Math227 = new Course("MATH 227",20);
-        Course Math251 = new Course("MATh 251",40);
+        Course Math261 = new Course("MATH 261",20);
+        Course Math251 = new Course("MATH 251",40);
         Course Math210 = new Course("MATH 210",20);
         Course EECE437 = new Course("EECE 437",15);
+        Course EECE442 = new Course("EECE 442", 20);
+        Course ENGL206 = new Course("ENGL 206" ,25);
+        Course Math241 = new Course("MATH 241", 20);
+        Course EECE435L = new Course("EECE 435L", 10);
+
+
+        //EECE435L is full! 10 students registered it
+        for (int i=1000; i <1011; i++)
+        {
+            EECE435L.addStudent((Student)(databaseConnection.checkCredentials(i, "password")));
+        }
+
 
         ScheduleElement time1 = new ScheduleElement();
         ScheduleElement time2;
@@ -86,14 +125,15 @@ public class DataClass {
         time2.setTime(12,00);
         time3.setTime(12,00);
 
-        Math227.addTiming(time1);
-        Math227.addTiming(time2);
-        Math227.addTiming(time3);
+        Math261.addTiming(time1);
+        Math261.addTiming(time2);
+        Math261.addTiming(time3);
 
-        databaseConnection.addCourse(Math227);
+        databaseConnection.addCourse(Math261);
         databaseConnection.addCourse(Math251);
         databaseConnection.addCourse(Math210);
         databaseConnection.addCourse(EECE437);
+        databaseConnection.addCourse(EECE435L);
 
         Room.getRoom("Nicely 224");
         Room.getRoom("Bechtel 111");

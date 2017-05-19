@@ -23,15 +23,21 @@ public class Student extends user {
 
     public boolean addcourse(Course c)
     {
-        if (super.addcourse(c))
+        if (super.getSchedule().hasConflict(c.getTimings()))
         {
-           if( c.addStudent(this)) //need to register the student to the course
-           {
+            return false;
+        }
+
+        if (c.addStudent(this))
+        {
+            super.addcourse(c);
+          // if( c.addStudent(this)) //need to register the student to the course
+          // {
                c.print();
                return true;
-           }
+          // }
 
-           removecourse(c.getName()); //not enough capacity in the course! need to remove it
+          // removecourse(c.getName()); //not enough capacity in the course! need to remove it
 
         }
         return false;
