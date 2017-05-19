@@ -139,13 +139,20 @@ public class gui {
 
             if (param)
             {
-                requestClient.approveCourse(Integer.parseInt(req));
+                //When approving a request, the teacher automatically adds the student who sent the request to the course
+                //Should happen in request class
+               Request r = requestClient.approveCourse(Integer.parseInt(req));
 
-                requestClient.start();
-                String courseName = requestClient.getNextRequest(Integer.parseInt(req)).getCourseName();
-                Course c = databaseConnection.retrieveCourse(courseName);
-                loggedInUser.addcourse(c);
+               databaseConnection.start();
+               Course c = databaseConnection.retrieveCourse(r.getCourseName()) ;
 
+               Student s = (Student) databaseConnection.retrieveUser(r.getStudentID());
+
+               if (c!= null)
+               {
+                   c.increaseCapacity(1);
+                   s.addcourse(c);
+               }
 
             }
             else

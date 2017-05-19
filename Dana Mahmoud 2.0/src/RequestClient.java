@@ -76,8 +76,9 @@ public class RequestClient {
         return studentRequests;
     };
 
-    public void approveCourse(int requestID)
+    public Request approveCourse(int requestID)
     {
+        //Approves a request and returns this request
 
         for (Request r: requests) {
 
@@ -85,9 +86,13 @@ public class RequestClient {
             if(r.getRequestID() == requestID)
             {
                 r.approveRequest();
-                return; //ID is unique-- there can only be one such request
+
+
+                return r; //ID is unique-- there can only be one such request
             }
         }
+
+        return null; //no such request
     }
 
     public void rejectCourse(int requestID)

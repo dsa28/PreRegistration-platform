@@ -110,6 +110,11 @@ public class data_storage {
         }
     }
 
+    public user retrieveUser(int userid)
+    {
+        return users.get(new user(userid));
+    }
+
     public user checkCredentials(int userid, String password) {
 
         //Check if user info is valid and return in

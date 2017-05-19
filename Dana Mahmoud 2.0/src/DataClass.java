@@ -16,7 +16,7 @@ public class DataClass {
         //Students
 
         databaseConnection.addUser("Dana", 201501455, "password", "Student");
-        databaseConnection.addUser("Antonio", 201402582, "password", "Student");
+        databaseConnection.addUser("Antonio", 201402582, "apple", "Student");
         databaseConnection.addUser("Mahmoud", 201502345, "password", "Student");
 
         databaseConnection.addUser("Fares", 1000, "password", "Student");
@@ -130,7 +130,6 @@ public class DataClass {
 
         Math210.setTeacher((Teacher)(databaseConnection.checkCredentials(21,"password")));
 
-
         time1.setTime(12,00);
         time2.setTime(12,00);
         time3.setTime(12,00);
@@ -139,6 +138,11 @@ public class DataClass {
         Math261.addTiming(time2);
         Math261.addTiming(time3);
 
+        Math251.addTiming(time1);
+        Math251.addTiming(time2);
+        Math251.addTiming(time3);
+
+        Math251.setTeacher( (Teacher)(databaseConnection.retrieveUser(20)));
 
         time1.setTime(9,00);
         time2.setTime(9,00);
@@ -148,11 +152,29 @@ public class DataClass {
         EECE442.addTiming(time2);
         EECE442.addTiming(time3);
 
+        EECE442.setTeacher((Teacher)(databaseConnection.checkCredentials(29,"password")));
+
         t.setDay(Day.Tuesday);
         t.setTime(18,00);
 
         EECE501.addTiming(t);
         EECE501.setTeacher((Teacher)(databaseConnection.checkCredentials(25,"password")));
+
+        time1.setTime(1,00);
+        time2.setTime(1,00);
+        time3.setTime(1,00);
+
+        ENGL206.addTiming(time1);
+        ENGL206.addTiming(time2);
+        ENGL206.addTiming(time3);
+
+        ENGL206.setTeacher( (Teacher)(databaseConnection.retrieveUser(26)));
+
+
+        (databaseConnection.retrieveUser(201501455)).addcourse(ENGL206);
+        (databaseConnection.retrieveUser(201402582)).addcourse(ENGL206);
+        (databaseConnection.retrieveUser(1001)).addcourse(ENGL206);
+        (databaseConnection.retrieveUser(1004)).addcourse(ENGL206);
 
         //add students to courses
         //eece 435L should be full
@@ -181,7 +203,7 @@ public class DataClass {
         }
 
 
-        for (int i=0; i <1030; i++)
+        for (int i=1000; i <1030; i++)
         {
             User = databaseConnection.checkCredentials(i, "password");
             if (User != null) {
@@ -199,6 +221,8 @@ public class DataClass {
 
         databaseConnection.addCourse(EECE442);
         databaseConnection.addCourse(EECE501);
+        databaseConnection.addCourse(ENGL206);
+        databaseConnection.addCourse(Math241);
 
         Room.getRoom("Nicely 224");
         Room.getRoom("Bechtel 111");
