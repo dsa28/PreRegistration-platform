@@ -187,7 +187,7 @@ public class Course  {
 
 	public String toString()
 	{
-		return name + ": @" + timings.toString() + " [" + teacher + "]" + "[" + room.getName() + "]" + "[" +  getRegistered() + "]";
+		return name + ": @" + timings.toString() + " [" + teacher + "]" + "[" + room.getName() + "]" + "[" +  getRegistered() + "]" + "[" + capacity + "]";
 	}
 	
 	Course(String name)
