@@ -9,18 +9,45 @@ public class DataClass {
         //Class used to fill hard coded data in the application
         //We use this class to isolate populating the data from the actual code, making it easier to both fill data
         //and get rid of all hardcoded data
+        //and making the actual code more readable
 
         //Already saved data
 
         //Students
         databaseConnection.addUser("Dana", 201501455, "password", "Student");
         databaseConnection.addUser("Antonio", 201402582, "password", "Student");
-        databaseConnection.addUser("Fares", 20160000, "password", "Student");
+        databaseConnection.addUser("Fares", 201600000, "password", "Student");
+        databaseConnection.addUser("Rabih", 201400000, "password", "Student");
+        databaseConnection.addUser("Jon Snow", 201201111, "password", "Student");
+        databaseConnection.addUser("Daenerys", 201200000, "dragon", "Student");
+        databaseConnection.addUser("Barry Allen", 201301455, "flash", "Student");
 
         //Teachers
-        databaseConnection.addUser("Zaraket", 1, "password", "Teacher");
-        databaseConnection.addUser("Karameh", 2, "password", "Teacher");
-        databaseConnection.addUser("Bazzi", 3, "password", "Teacher");
+        databaseConnection.addUser("Fadi Zaraket", 10, "password", "Teacher");
+        databaseConnection.addUser("Fadi Karameh", 11, "password", "Teacher");
+        databaseConnection.addUser("Louay Bazzi", 12, "password", "Teacher");
+        databaseConnection.addUser("Wassim Masri", 13, "password", "Teacher");
+        databaseConnection.addUser("Imad El Hajj", 14, "password", "Teacher");
+        databaseConnection.addUser("Hazem Hajj", 15, "password", "Teacher");
+
+        databaseConnection.addUser("Lama Hamandi", 16, "password", "Teacher");
+        databaseConnection.addUser("Ali Chehab", 17, "password", "Teacher");
+        databaseConnection.addUser("Ali Kanso", 18, "password", "Teacher");
+        databaseConnection.addUser("Ibrahim Abu Faycal", 19, "password", "Teacher");
+
+        databaseConnection.addUser("Dolly Fayyad", 20, "password", "Teacher");
+        databaseConnection.addUser("Florian Bertrand", 21, "password", "Teacher");
+        databaseConnection.addUser("Hazar Abu Khuzam", 22, "password", "Teacher");
+        databaseConnection.addUser("Kamal Makdisi", 23, "password", "Teacher");
+
+        databaseConnection.addUser("Zaher Dawy", 24, "password", "Teacher");
+        databaseConnection.addUser("Mariette Awada", 25, "password", "Teacher");
+
+        databaseConnection.addUser("Amin John Kurani", 26, "password", "Teacher");
+        databaseConnection.addUser("Christopher Nassar", 27, "password", "Teacher");
+        databaseConnection.addUser("", 28, "password", "Teacher");
+        databaseConnection.addUser("Ibrahim Abu Faycal", 29, "password", "Teacher");
+
 
         //Admins
         databaseConnection.addUser("Admin",0,"password", "Admin");
