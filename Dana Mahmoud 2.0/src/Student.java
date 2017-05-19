@@ -31,13 +31,8 @@ public class Student extends user {
         if (c.addStudent(this))
         {
             super.addcourse(c);
-          // if( c.addStudent(this)) //need to register the student to the course
-          // {
-               c.print();
-               return true;
-          // }
 
-          // removecourse(c.getName()); //not enough capacity in the course! need to remove it
+               return true;
 
         }
         return false;

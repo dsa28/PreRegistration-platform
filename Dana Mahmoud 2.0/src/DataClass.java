@@ -80,6 +80,8 @@ public class DataClass {
         databaseConnection.addUser("Admin",0,"password", "Admin");
 
 
+        user User;
+
         //Courses
         Course Math261 = new Course("MATH 261",20);
         Course Math251 = new Course("MATH 251",40);
@@ -89,13 +91,16 @@ public class DataClass {
         Course ENGL206 = new Course("ENGL 206" ,25);
         Course Math241 = new Course("MATH 241", 20);
         Course EECE435L = new Course("EECE 435L", 10);
+        Course EECE501 = new Course("EECE 501", 100);
 
 
-        //EECE435L is full! 10 students registered it
-        for (int i=1000; i <1011; i++)
-        {
-            EECE435L.addStudent((Student)(databaseConnection.checkCredentials(i, "password")));
-        }
+        ScheduleElement t = new ScheduleElement();
+        t.setStartTime(2,00);
+        t.setEndTime(5,00);
+        t.setDay(Day.Thursday);
+
+        EECE435L.addTiming(t);
+
 
 
         ScheduleElement time1 = new ScheduleElement();
@@ -117,9 +122,14 @@ public class DataClass {
         EECE437.addTiming(time2);
         EECE437.addTiming(time3);
 
+        EECE437.setTeacher((Teacher)(databaseConnection.checkCredentials(10,"password")));
+
         Math210.addTiming(time1);
         Math210.addTiming(time2);
         Math210.addTiming(time3);
+
+        Math210.setTeacher((Teacher)(databaseConnection.checkCredentials(21,"password")));
+
 
         time1.setTime(12,00);
         time2.setTime(12,00);
@@ -129,11 +139,66 @@ public class DataClass {
         Math261.addTiming(time2);
         Math261.addTiming(time3);
 
+
+        time1.setTime(9,00);
+        time2.setTime(9,00);
+        time3.setTime(9,00);
+
+        EECE442.addTiming(time1);
+        EECE442.addTiming(time2);
+        EECE442.addTiming(time3);
+
+        t.setDay(Day.Tuesday);
+        t.setTime(18,00);
+
+        EECE501.addTiming(t);
+        EECE501.setTeacher((Teacher)(databaseConnection.checkCredentials(25,"password")));
+
+        //add students to courses
+        //eece 435L should be full
+        for (int i=1000; i <1015; i++)
+        {
+            User = databaseConnection.checkCredentials(i, "password");
+            if (User != null)
+            {
+                User.addcourse(EECE435L);
+                User.addcourse(EECE437);
+
+                if (i% 4 == 0)
+                {
+                    User.addcourse(Math261);
+                    System.out.println(i + " Math 261");
+                }
+
+                if (i % 3 == 0)
+                {
+                    User.addcourse(EECE442);
+                    System.out.println(i + " EECE 442");
+                }
+
+
+            }
+        }
+
+
+        for (int i=0; i <1030; i++)
+        {
+            User = databaseConnection.checkCredentials(i, "password");
+            if (User != null) {
+                User.addcourse(EECE501);
+
+            }
+        }
+
+
         databaseConnection.addCourse(Math261);
         databaseConnection.addCourse(Math251);
         databaseConnection.addCourse(Math210);
         databaseConnection.addCourse(EECE437);
         databaseConnection.addCourse(EECE435L);
+
+        databaseConnection.addCourse(EECE442);
+        databaseConnection.addCourse(EECE501);
 
         Room.getRoom("Nicely 224");
         Room.getRoom("Bechtel 111");
