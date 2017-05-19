@@ -72,7 +72,7 @@ public class DataClass {
 
         databaseConnection.addUser("Amin John Kurani", 26, "password", "Teacher");
         databaseConnection.addUser("Christopher Nassar", 27, "password", "Teacher");
-        databaseConnection.addUser("Sophie Moufawad", 28, "password", "Teacher");
+        databaseConnection.addUser("Youssef Saad", 28, "password", "Teacher");
         databaseConnection.addUser("Ibrahim Abu Faycal", 29, "password", "Teacher");
 
 
@@ -92,7 +92,9 @@ public class DataClass {
         Course Math241 = new Course("MATH 241", 20);
         Course EECE435L = new Course("EECE 435L", 10);
         Course EECE501 = new Course("EECE 501", 100);
-
+        Course INDE301 = new Course("INDE 301", 45);
+        Course INDE410 = new Course("INDE 410",45);
+        Course EECE455 = new Course("EECE 455", 45);
 
         ScheduleElement t = new ScheduleElement();
         t.setStartTime(2,00);
@@ -171,15 +173,63 @@ public class DataClass {
         ENGL206.setTeacher( (Teacher)(databaseConnection.retrieveUser(26)));
 
 
+        time1.setTime(2,00);
+        time2.setTime(2,00);
+        time3.setTime(2,00);
+
+        Math241.addTiming(time1);
+        Math241.addTiming(time2);
+        Math241.addTiming(time3);
+
+
+        time1.setTime(11,00);
+        time2.setTime(11,00);
+        time3.setTime(11,00);
+
+        EECE455.addTiming(time1);
+        EECE455.addTiming(time2);
+        EECE455.addTiming(time3);
+
+        EECE455.setTeacher((Teacher)databaseConnection.retrieveUser(17));
+
+
         (databaseConnection.retrieveUser(201501455)).addcourse(ENGL206);
         (databaseConnection.retrieveUser(201402582)).addcourse(ENGL206);
         (databaseConnection.retrieveUser(1001)).addcourse(ENGL206);
         (databaseConnection.retrieveUser(1004)).addcourse(ENGL206);
 
+        (databaseConnection.retrieveUser(201501455)).addcourse(EECE455);
+        (databaseConnection.retrieveUser(201402582)).addcourse(EECE455);
+
+        ScheduleElement t2 = new ScheduleElement();
+        t2.setDay(Day.Tuesday);
+        t2.setStartTime(8,00);
+        t2.setEndTime(9,30);
+
+        ScheduleElement t3 = new ScheduleElement();
+        t3.setDay(Day.Tuesday);
+        t3.setStartTime(8,00);
+        t3.setEndTime(9,30);
+
+        INDE301.addTiming(t2);
+        INDE301.addTiming(t3);
+
+        t2.setTime(9,30);
+        t3.setTime(9,30);
+
+        INDE410.addTiming(t2);
+        INDE410.addTiming(t3);
+
+        INDE410.setTeacher((Teacher)databaseConnection.retrieveUser(28));
+
+
+
         //add students to courses
         //eece 435L should be full
         for (int i=1000; i <1015; i++)
         {
+            (databaseConnection.retrieveUser(i)).addcourse(EECE455);
+
             User = databaseConnection.checkCredentials(i, "password");
             if (User != null)
             {
@@ -224,12 +274,51 @@ public class DataClass {
         databaseConnection.addCourse(ENGL206);
         databaseConnection.addCourse(Math241);
 
-        Room.getRoom("Nicely 224");
-        Room.getRoom("Bechtel 111");
-        Room.getRoom("WHCR");
-        Room.getRoom("Fisk 321");
-        Room.getRoom("Bechtel 110");
-        Room.getRoom("Nicely 220");
+        databaseConnection.addCourse(INDE301);
+        databaseConnection.addCourse(INDE410);
+
+        databaseConnection.addCourse(EECE455);
+
+        Room room;
+        room=  Room.getRoom("Nicely 224");
+        room.setMaxCapacity(25);
+        Math261.setRoom(room);
+
+        room = Room.getRoom("Bechtel 111");
+        room.setMaxCapacity(45);
+
+        room = Room.getRoom("WHCR");
+        room.setMaxCapacity(70);
+
+        room = Room.getRoom("Fisk 321");
+        room.setMaxCapacity(25);
+
+        room = Room.getRoom("Bechtel 110");
+        room.setMaxCapacity(45);
+
+        room = Room.getRoom("Nicely 220");
+        room.setMaxCapacity(25);
+
+        room = Room.getRoom("Phys 212");
+        room.setMaxCapacity(30);
+        ENGL206.setRoom(room);
+
+        room = Room.getRoom("Tiny room");
+        room.setMaxCapacity(4);
+
+        room = Room.getRoom("Bliss 205");
+        room.setMaxCapacity(40);
+
+        room = Room.getRoom("IOEC 224A");
+        room.setMaxCapacity(30);
+
+        room = Room.getRoom("IOEC 224B");
+        room.setMaxCapacity(30);
+
+        room = Room.getRoom("IOEC 224C");
+        room.setMaxCapacity(30);
+
+
     }
 
 }

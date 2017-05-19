@@ -23,7 +23,12 @@ public class Room {
 	
 	static public HashMap<String,Room> rooms = new HashMap<String,Room>(); //the rooms of aub
 	private ArrayList<Course> courses = new ArrayList<Course>();
-	
+
+	public String toString()
+	{
+		return name + " [" + maxCapacity + "]";
+	}
+
 	public void addCourse(Course course)
 	{
 		courses.add(course);

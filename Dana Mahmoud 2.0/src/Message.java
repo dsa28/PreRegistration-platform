@@ -26,7 +26,7 @@ public class Message {
 
     int getSenderID ()
     {
-        return receiverID;
+        return senderID;
     }
 
     String getContent()

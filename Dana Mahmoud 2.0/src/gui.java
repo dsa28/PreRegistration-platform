@@ -709,7 +709,7 @@ public class gui {
 
                 for (Room r: Room.rooms.values()) //get all rooms
                 {
-                    rooms.addElement(r.getName());
+                    rooms.addElement(r.toString());
                 }
 
 
@@ -742,9 +742,9 @@ public class gui {
                course = databaseConnection.retrieveCourse(s);
 
                s = (String) rooms;
+               s = s.substring(0,s.indexOf(" ["));
                course.setRoom(s);
 
-               course.print();
 
 
                 }
